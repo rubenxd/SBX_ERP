@@ -1,0 +1,14 @@
+create table tbl_tercero
+(
+cl_Codigo_pk int  identity(1,1),
+cl_identificacion varchar(20) primary key(cl_Codigo_pk,cl_identificacion),
+cl_tipo_identificacion int,
+cl_razon_social varchar(100),
+cl_tipo_persona int,
+cl_direccion varchar(100),
+cl_telefonos varchar(30),
+cl_Email varchar(100),
+cl_fecha_creacion datetime,
+cl_fecha_modificacion datetime,
+cl_usuario int
+)
