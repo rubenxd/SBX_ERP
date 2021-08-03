@@ -240,7 +240,8 @@ namespace SBX_ERP.model
   "  inner join tbl_items it on it.cl_codigo_pk = os.[cl_item] " +
   "  left join tbl_vehiculo vh on vh.cl_codigo_pk = os.cl_vehiculo " +
   "  inner join tbl_tercero tc on tc.cl_Codigo_pk = vh.cl_Tercero" +
-                       " where cl_documento = '" + cl_documento + "' and cl_consecutivo = " + cl_consecutivo + " ";
+                       " where cl_documento = '" + cl_documento + "' and cl_consecutivo = " + cl_consecutivo + " " +
+                       "   order by it.cl_tipo_item asc ";
             v_dt = cls_datos.mtd_consultar(v_query);
             return v_dt;
         }

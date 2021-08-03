@@ -290,9 +290,11 @@ namespace SBX_ERP
                                 cls_Orden_Servicio.cl_consecutivo = rows["Consecutivo"].ToString();
                                 v_dt = cls_Orden_Servicio.mtd_consultar_orden_servicio();
                                 List<cls_orden_servicio> lrords = new List<cls_orden_servicio>();
-                                foreach (DataRow rows_2 in v_dt.Rows)
+     
+                            foreach (DataRow rows_2 in v_dt.Rows)
                                 {
                                 cls_orden_servicio cls_Orden_Servicio2 = new cls_orden_servicio();
+                          
                                 cls_Orden_Servicio2.cl_documento = rows_2["cl_documento"].ToString();
                                 cls_Orden_Servicio2.cl_consecutivo = rows_2["cl_consecutivo"].ToString();
                                 cls_Orden_Servicio2.cl_vehiculo = rows_2["cl_vehiculo"].ToString();

@@ -48,12 +48,30 @@ namespace SBX_ERP
                         v_dt = cl_Cuenta_cobro.mtd_consultar_orden_servicio();
                         List<cl_cuenta_cobro> lrctc = new List<cl_cuenta_cobro>();
                         List<cl_cuenta_cobro> lrctc2 = new List<cl_cuenta_cobro>();
+                        int contadorCliente = 0;
                         foreach (DataRow rows_2 in v_dt.Rows)
-                        {                       
+                        {
+                            cl_cuenta_cobro cl_Cuenta_Cobro2 = new cl_cuenta_cobro();
+                            if (contadorCliente == 0)
+                            {
+                                cl_Cuenta_Cobro2.cl_documento = rows_2["cl_documento"].ToString();
+                                cl_Cuenta_Cobro2.cl_consecutivo = rows_2["cl_consecutivo"].ToString();
+                                cl_Cuenta_Cobro2.cl_Vehiculo = rows_2["cl_Vehiculo1"].ToString();
+                                cl_Cuenta_Cobro2.cl_Placa = rows_2["cl_Placa"].ToString();
+                                cl_Cuenta_Cobro2.cl_Modelo = rows_2["cl_Modelo"].ToString();
+                                cl_Cuenta_Cobro2.cl_km = "0";
+                                cl_Cuenta_Cobro2.cl_identificacion = rows_2["cl_identificacion"].ToString();
+                                cl_Cuenta_Cobro2.cl_razon_social = rows_2["cl_razon_social"].ToString();
+                                cl_Cuenta_Cobro2.cl_direccion = rows_2["cl_direccion"].ToString();
+                                cl_Cuenta_Cobro2.cl_telefonos = rows_2["cl_telefonos"].ToString();
+                                cl_Cuenta_Cobro2.cl_Email = rows_2["cl_Email"].ToString();
+                                DateTime Fechamod = Convert.ToDateTime(rows_2["cl_fecha_modificacion"]);
+                                cl_Cuenta_Cobro2.cl_fecha_modificacion = Fechamod.ToString("yyyy-MM-dd");
+                            }
                             if (rows_2["cl_tipo_item"].ToString() == "Servicio")
                             {
                                 //servicios
-                                cl_cuenta_cobro cl_Cuenta_Cobro2 = new cl_cuenta_cobro();
+                                
                                 cl_Cuenta_Cobro2.cl_documento = rows_2["cl_documento"].ToString();
                                 cl_Cuenta_Cobro2.cl_consecutivo = rows_2["cl_consecutivo"].ToString();
                                 cl_Cuenta_Cobro2.cl_vehiculo = rows_2["cl_vehiculo"].ToString();
@@ -95,6 +113,11 @@ namespace SBX_ERP
                             }
                             else
                             {
+                                if (contadorCliente == 0)
+                                {
+                                    lrctc.Add(cl_Cuenta_Cobro2);
+                                    contadorCliente++;
+                                }
                                 //Productos
                                 cl_cuenta_cobro cl_Cuenta_Cobro3 = new cl_cuenta_cobro();
                                 cl_Cuenta_Cobro3.cl_documento = rows_2["cl_documento"].ToString();

@@ -49,22 +49,44 @@ namespace SBX_ERP
                 {
                     if (MessageBox.Show("¿Desea imprimir Cotizacion?", "Imprimir Cotizacion", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
+                        int contadorItems = 0;
                         DataRow rows = v_dt.Rows[0];
                         cls_Cotizacion.cl_documento = item.Cells["Documento"].Value.ToString();
                         cls_Cotizacion.cl_consecutivo = item.Cells["Consecutivo"].Value.ToString();
                         v_dt = cls_Cotizacion.mtd_consultar_cotizacion();
                         List<cls_cotizacion> lrords = new List<cls_cotizacion>();
                         List<cls_cotizacion> lrords2 = new List<cls_cotizacion>();
+                        int contadorCliente = 0;
                         foreach (DataRow rows_2 in v_dt.Rows)
                         {
+                            cls_cotizacion cls_Cotizacion2 = new cls_cotizacion();
+                            if (contadorCliente == 0)
+                            {
+                                cls_Cotizacion2.cl_documento = rows_2["cl_documento"].ToString();
+                                cls_Cotizacion2.cl_consecutivo = rows_2["cl_consecutivo"].ToString();
+                                cls_Cotizacion2.cl_Vehiculo = rows_2["cl_Vehiculo1"].ToString();
+                                cls_Cotizacion2.cl_Placa = rows_2["cl_Placa"].ToString();
+                                cls_Cotizacion2.cl_Modelo = rows_2["cl_Modelo"].ToString();
+                                cls_Cotizacion2.cl_km = "0";
+                                cls_Cotizacion2.cl_identificacion = rows_2["cl_identificacion"].ToString();
+                                cls_Cotizacion2.cl_razon_social = rows_2["cl_razon_social"].ToString();
+                                cls_Cotizacion2.cl_direccion = rows_2["cl_direccion"].ToString();
+                                cls_Cotizacion2.cl_telefonos = rows_2["cl_telefonos"].ToString();
+                                cls_Cotizacion2.cl_Email = rows_2["cl_Email"].ToString();
+                                DateTime FechaModif = Convert.ToDateTime(rows_2["cl_fecha_modificacion"]);
+                                cls_Cotizacion2.cl_fecha_modificacion = FechaModif.ToString("yyyy-MM-dd");
+                            }                         
+                           
                             if (rows_2["cl_tipo_item"].ToString() == "Producto") 
                             {
                                 //productos
-                                cls_cotizacion cls_Cotizacion2 = new cls_cotizacion();
+                               
                                 cls_Cotizacion2.cl_documento = rows_2["cl_documento"].ToString();
                                 cls_Cotizacion2.cl_consecutivo = rows_2["cl_consecutivo"].ToString();
                                 cls_Cotizacion2.cl_vehiculo = rows_2["cl_vehiculo"].ToString();
-                                cls_Cotizacion2.cl_item = rows_2["cl_item"].ToString();
+                                contadorItems++;
+                                //cls_Cotizacion2.cl_item = rows_2["cl_item"].ToString();
+                                cls_Cotizacion2.cl_item = contadorItems.ToString();
                                 cls_Cotizacion2.cl_cantidad = rows_2["cl_cantidad"].ToString();
                                 double Costo = Convert.ToDouble(rows_2["cl_costo"]);
                                 cls_Cotizacion2.cl_costo = Costo.ToString("N");
@@ -99,12 +121,20 @@ namespace SBX_ERP
                             }
                             else 
                             {
+                                if (contadorCliente == 0)
+                                {
+                                    lrords.Add(cls_Cotizacion2);
+                                    contadorCliente++;
+                                }
+
                                 //servicios
                                 cls_cotizacion cls_Cotizacion3 = new cls_cotizacion();
                                 cls_Cotizacion3.cl_documento = rows_2["cl_documento"].ToString();
                                 cls_Cotizacion3.cl_consecutivo = rows_2["cl_consecutivo"].ToString();
                                 cls_Cotizacion3.cl_vehiculo = rows_2["cl_vehiculo"].ToString();
-                                cls_Cotizacion3.cl_item = rows_2["cl_item"].ToString();
+                                contadorItems++;
+                                //cls_Cotizacion3.cl_item = rows_2["cl_item"].ToString();
+                                cls_Cotizacion3.cl_item = contadorItems.ToString();
                                 cls_Cotizacion3.cl_cantidad = rows_2["cl_cantidad"].ToString();
                                 double Costo = Convert.ToDouble(rows_2["cl_costo"]);
                                 cls_Cotizacion3.cl_costo = Costo.ToString("N");
