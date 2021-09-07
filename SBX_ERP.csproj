@@ -100,6 +100,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_anular_doc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_anular_doc.Designer.cs">
+      <DependentUpon>frm_anular_doc.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_busquedas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -217,6 +223,9 @@
     <EmbeddedResource Include="CuentaCobro.rdlc" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_anular_doc.resx">
+      <DependentUpon>frm_anular_doc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_busquedas.resx">
       <DependentUpon>frm_busquedas.cs</DependentUpon>

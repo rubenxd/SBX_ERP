@@ -65,7 +65,7 @@ namespace SBX_ERP
                             cls_Orden_Servicio2.cl_Vehiculo = rows_2["cl_Vehiculo1"].ToString();
                             cls_Orden_Servicio2.cl_Placa = rows_2["cl_Placa"].ToString();
                             cls_Orden_Servicio2.cl_Modelo = rows_2["cl_Modelo"].ToString();
-                            cls_Orden_Servicio2.cl_km = "0";
+                            cls_Orden_Servicio2.cl_km = rows_2["km"].ToString(); ;
                             cls_Orden_Servicio2.cl_identificacion = rows_2["cl_identificacion"].ToString();
                             cls_Orden_Servicio2.cl_razon_social = rows_2["cl_razon_social"].ToString();
                             cls_Orden_Servicio2.cl_direccion = rows_2["cl_direccion"].ToString();

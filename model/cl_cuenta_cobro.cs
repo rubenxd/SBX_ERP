@@ -65,6 +65,11 @@ namespace SBX_ERP.model
         //orden de servicio
         public string docOS { get; set; }
         public string ConseOS { get; set; }
+
+        //Anulacion
+        public string cl_doc_nuevo { get; set; }
+        public string cl_conse_nuevo { get; set; }
+        public string cl_nota_anulacion { get; set; }
         public DataTable mtd_consultar_x_placa()
         {
             v_query = " select " +
@@ -263,6 +268,22 @@ namespace SBX_ERP.model
             v_ok = cls_datos.mtd_eliminar(v_query);
             return v_ok;
         }
+      
+        public Boolean mtd_Anular()
+        {
+            v_query = " UPDATE tbl_cuenta_cobro set cl_estado = 0, cl_documento_nuevo ='"+cl_doc_nuevo+"' , cl_consecutivo_nuevo = "+cl_conse_nuevo+"  ,cl_nota_anulacion= '"+cl_nota_anulacion+"' " +
+                "WHERE cl_documento = '"+cl_documento+ "' AND cl_consecutivo = '" + cl_consecutivo + "' ";
+            mtd_asignaParametros();
+            v_ok = cls_datos.mtd_ejecutar(v_query);
+        
+            return v_ok;
+        }
 
+        public DataTable mtd_consultar_documento_a_anular()
+        {
+            v_query = " SELECT * FROM tbl_cuenta_cobro WHERE cl_documento = '"+cl_documento+"' AND cl_consecutivo = '"+cl_consecutivo+"' ";
+            v_dt = cls_datos.mtd_consultar(v_query);
+            return v_dt;
+        }
     }
 }

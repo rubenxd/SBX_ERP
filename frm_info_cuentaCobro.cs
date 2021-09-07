@@ -32,6 +32,25 @@ namespace SBX_ERP
             cl_Cuenta_cobro.v_Fecha_fin = dtp_fecha_fin.Text;
             v_dt = cl_Cuenta_cobro.mtd_consultar_ordenes();
             dtg_ayudas.DataSource = v_dt;
+            mtd_calcular();
+        }
+        private void mtd_calcular()
+        {
+            double totalCostos = 0;
+            double TotalVentas = 0;
+            if (dtg_ayudas.Rows.Count > 0)
+            {
+                foreach (DataGridViewRow rows in dtg_ayudas.Rows)
+                {
+                    if (rows.Cells["cl_estado"].Value.ToString() == "Activa")
+                    {
+                        totalCostos += Convert.ToDouble(rows.Cells["Costo"].Value) * Convert.ToDouble(rows.Cells["Cantidad"].Value);
+                        TotalVentas += Convert.ToDouble(rows.Cells["Precio Venta"].Value) * Convert.ToDouble(rows.Cells["Cantidad"].Value);
+                    }              
+                }      
+                    txt_costo.Text = totalCostos.ToString("N0");
+                    txt_venta.Text = TotalVentas.ToString("N0");
+            }
         }
         private void btn_imprimir_Click(object sender, EventArgs e)
         {
@@ -59,7 +78,7 @@ namespace SBX_ERP
                                 cl_Cuenta_Cobro2.cl_Vehiculo = rows_2["cl_Vehiculo1"].ToString();
                                 cl_Cuenta_Cobro2.cl_Placa = rows_2["cl_Placa"].ToString();
                                 cl_Cuenta_Cobro2.cl_Modelo = rows_2["cl_Modelo"].ToString();
-                                cl_Cuenta_Cobro2.cl_km = "0";
+                                cl_Cuenta_Cobro2.cl_km = rows_2["km"].ToString();
                                 cl_Cuenta_Cobro2.cl_identificacion = rows_2["cl_identificacion"].ToString();
                                 cl_Cuenta_Cobro2.cl_razon_social = rows_2["cl_razon_social"].ToString();
                                 cl_Cuenta_Cobro2.cl_direccion = rows_2["cl_direccion"].ToString();
@@ -98,7 +117,7 @@ namespace SBX_ERP
                                 cl_Cuenta_Cobro2.cl_Vehiculo = rows_2["cl_Vehiculo1"].ToString();
                                 cl_Cuenta_Cobro2.cl_Placa = rows_2["cl_Placa"].ToString();
                                 cl_Cuenta_Cobro2.cl_Modelo = rows_2["cl_Modelo"].ToString();
-                                cl_Cuenta_Cobro2.cl_km = "0";
+                                cl_Cuenta_Cobro2.cl_km = rows_2["km"].ToString();
                                 cl_Cuenta_Cobro2.cl_identificacion = rows_2["cl_identificacion"].ToString();
                                 cl_Cuenta_Cobro2.cl_razon_social = rows_2["cl_razon_social"].ToString();
                                 cl_Cuenta_Cobro2.cl_direccion = rows_2["cl_direccion"].ToString();
@@ -147,7 +166,7 @@ namespace SBX_ERP
                                 cl_Cuenta_Cobro3.cl_Vehiculo = rows_2["cl_Vehiculo1"].ToString();
                                 cl_Cuenta_Cobro3.cl_Placa = rows_2["cl_Placa"].ToString();
                                 cl_Cuenta_Cobro3.cl_Modelo = rows_2["cl_Modelo"].ToString();
-                                cl_Cuenta_Cobro3.cl_km = "0";
+                                cl_Cuenta_Cobro3.cl_km = rows_2["km"].ToString();
                                 cl_Cuenta_Cobro3.cl_identificacion = rows_2["cl_identificacion"].ToString();
                                 cl_Cuenta_Cobro3.cl_razon_social = rows_2["cl_razon_social"].ToString();
                                 cl_Cuenta_Cobro3.cl_direccion = rows_2["cl_direccion"].ToString();
@@ -183,6 +202,69 @@ namespace SBX_ERP
                 Enviainfo(v_dato);
                 this.Dispose();
             }
+        }
+        Boolean v_ok;
+        string DocNuevo = "";
+        string ConseDocNuevo = "";
+        string NotaAnulacion = "";
+        private void btn_anular_Click(object sender, EventArgs e)
+        {
+             DocNuevo = "";
+             ConseDocNuevo = "";
+             NotaAnulacion = "";
+            if (dtg_ayudas.Rows.Count > 0)
+            {
+                if (MessageBox.Show("¿Desea Anular cuenta de cobro?", "Anular Cuenta de cobro", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    if (dtg_ayudas.Rows.Count > 0)
+                    {
+                        frm_anular_doc frm_Anular_Doc = new frm_anular_doc();
+                        frm_Anular_Doc.Enviainfo += new frm_anular_doc.EnviarInfo(mtd_carga_datos);
+                        frm_Anular_Doc.ShowDialog();
+                        if (DocNuevo != "")
+                        {
+                            foreach (DataGridViewRow item in dtg_ayudas.SelectedRows)
+                            {
+                                DataRow rows = v_dt.Rows[0];
+                                cl_Cuenta_cobro.cl_documento = item.Cells["Documento"].Value.ToString();
+                                cl_Cuenta_cobro.cl_consecutivo = item.Cells["Consecutivo"].Value.ToString();
+                                string Estado = item.Cells["cl_estado"].Value.ToString();
+                                if (Estado == "Activa")
+                                {
+                                    cl_Cuenta_cobro.cl_doc_nuevo = DocNuevo;
+                                    cl_Cuenta_cobro.cl_conse_nuevo = ConseDocNuevo;
+                                    cl_Cuenta_cobro.cl_nota_anulacion = NotaAnulacion;
+                                    v_ok = cl_Cuenta_cobro.mtd_Anular();
+                                    if (v_ok)
+                                    {
+                                        MessageBox.Show("Cuenta de cobro: " + item.Cells["Documento"].Value.ToString() + " - " + item.Cells["Consecutivo"].Value.ToString() + " Anulada", "Anulada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                        cl_Cuenta_cobro.v_buscar = txt_buscar.Text;
+                                        cl_Cuenta_cobro.v_Fecha_inicio = dtp_fecha_inicio.Text;
+                                        cl_Cuenta_cobro.v_Fecha_fin = dtp_fecha_fin.Text;
+                                        v_dt = cl_Cuenta_cobro.mtd_consultar_ordenes();
+                                        dtg_ayudas.DataSource = v_dt;
+                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Cuenta de cobro Ya esta Anulada, por favor revise que la cuenta de cobro este Activa", "Error Anular", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+             
+        }
+        private void mtd_carga_datos(string Dato1, string Dato2, string Dato3) 
+        {
+            if (Dato1 != "Cancelar")
+            {
+                DocNuevo = Dato1;
+                ConseDocNuevo = Dato2;
+                NotaAnulacion = Dato3;
+            }      
         }
     }
 }

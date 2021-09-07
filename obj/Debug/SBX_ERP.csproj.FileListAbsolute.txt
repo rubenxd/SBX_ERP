@@ -86,3 +86,4 @@ C:\SBX_ERP\obj\Debug\SBX_ERP.exe
 C:\SBX_ERP\obj\Debug\SBX_ERP.pdb
 C:\SBX_ERP\obj\Debug\SBX_ERP.frm_config.resources
 C:\SBX_ERP\obj\Debug\SBX_ERP.csprojAssemblyReference.cache
+C:\SBX_ERP\obj\Debug\SBX_ERP.frm_anular_doc.resources

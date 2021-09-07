@@ -118,6 +118,7 @@ namespace SBX_ERP
 
                         if (MessageBox.Show("¿Desea imprimir Cuenta cobro?", "Imprimir Cuenta cobro", MessageBoxButtons.YesNo) == DialogResult.Yes)
                         {
+                            int contadorItems = 0;
                             cl_cuenta_cobro cl_Cuenta_Cobro = new cl_cuenta_cobro();
                             v_dt = cl_Cuenta_Cobro.mtd_consultar_ultima_orden();
                             DataRow rows = v_dt.Rows[0];
@@ -137,7 +138,7 @@ namespace SBX_ERP
                                     cl_Cuenta_Cobro2.cl_Vehiculo = rows_2["cl_Vehiculo1"].ToString();
                                     cl_Cuenta_Cobro2.cl_Placa = rows_2["cl_Placa"].ToString();
                                     cl_Cuenta_Cobro2.cl_Modelo = rows_2["cl_Modelo"].ToString();
-                                    cl_Cuenta_Cobro2.cl_km = "0";
+                                    cl_Cuenta_Cobro2.cl_km = rows_2["km"].ToString();
                                     cl_Cuenta_Cobro2.cl_identificacion = rows_2["cl_identificacion"].ToString();
                                     cl_Cuenta_Cobro2.cl_razon_social = rows_2["cl_razon_social"].ToString();
                                     cl_Cuenta_Cobro2.cl_direccion = rows_2["cl_direccion"].ToString();
@@ -153,7 +154,9 @@ namespace SBX_ERP
                                     cl_Cuenta_Cobro2.cl_documento = rows_2["cl_documento"].ToString();
                                     cl_Cuenta_Cobro2.cl_consecutivo = rows_2["cl_consecutivo"].ToString();
                                     cl_Cuenta_Cobro2.cl_vehiculo = rows_2["cl_vehiculo"].ToString();
-                                    cl_Cuenta_Cobro2.cl_item = rows_2["cl_item"].ToString();
+                                    contadorItems++;
+                                    //cl_Cuenta_Cobro2.cl_item = rows_2["cl_item"].ToString();
+                                    cl_Cuenta_Cobro2.cl_item = contadorItems.ToString();
                                     cl_Cuenta_Cobro2.cl_cantidad = rows_2["cl_cantidad"].ToString();
                                     double Costo = Convert.ToDouble(rows_2["cl_costo"]);
                                     cl_Cuenta_Cobro2.cl_costo = Costo.ToString("N");
@@ -174,7 +177,7 @@ namespace SBX_ERP
                                     cl_Cuenta_Cobro2.cl_Vehiculo = rows_2["cl_Vehiculo1"].ToString();
                                     cl_Cuenta_Cobro2.cl_Placa = rows_2["cl_Placa"].ToString();
                                     cl_Cuenta_Cobro2.cl_Modelo = rows_2["cl_Modelo"].ToString();
-                                    cl_Cuenta_Cobro2.cl_km = "0";
+                                    cl_Cuenta_Cobro2.cl_km = rows_2["km"].ToString();
                                     cl_Cuenta_Cobro2.cl_identificacion = rows_2["cl_identificacion"].ToString();
                                     cl_Cuenta_Cobro2.cl_razon_social = rows_2["cl_razon_social"].ToString();
                                     cl_Cuenta_Cobro2.cl_direccion = rows_2["cl_direccion"].ToString();
@@ -199,7 +202,9 @@ namespace SBX_ERP
                                     cl_Cuenta_Cobro3.cl_documento = rows_2["cl_documento"].ToString();
                                     cl_Cuenta_Cobro3.cl_consecutivo = rows_2["cl_consecutivo"].ToString();
                                     cl_Cuenta_Cobro3.cl_vehiculo = rows_2["cl_vehiculo"].ToString();
-                                    cl_Cuenta_Cobro3.cl_item = rows_2["cl_item"].ToString();
+                                    contadorItems++;
+                                    //cl_Cuenta_Cobro3.cl_item = rows_2["cl_item"].ToString();
+                                    cl_Cuenta_Cobro3.cl_item = contadorItems.ToString();
                                     cl_Cuenta_Cobro3.cl_cantidad = rows_2["cl_cantidad"].ToString();
                                     double Costo2 = Convert.ToDouble(rows_2["cl_costo"]);
                                     cl_Cuenta_Cobro3.cl_costo = Costo2.ToString("N");
@@ -220,7 +225,7 @@ namespace SBX_ERP
                                     cl_Cuenta_Cobro3.cl_Vehiculo = rows_2["cl_Vehiculo1"].ToString();
                                     cl_Cuenta_Cobro3.cl_Placa = rows_2["cl_Placa"].ToString();
                                     cl_Cuenta_Cobro3.cl_Modelo = rows_2["cl_Modelo"].ToString();
-                                    cl_Cuenta_Cobro3.cl_km = "0";
+                                    cl_Cuenta_Cobro3.cl_km = rows_2["km"].ToString();
                                     cl_Cuenta_Cobro3.cl_identificacion = rows_2["cl_identificacion"].ToString();
                                     cl_Cuenta_Cobro3.cl_razon_social = rows_2["cl_razon_social"].ToString();
                                     cl_Cuenta_Cobro3.cl_direccion = rows_2["cl_direccion"].ToString();

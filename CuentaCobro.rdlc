@@ -1375,7 +1375,7 @@
         <Top>0.18204cm</Top>
         <Left>0.17393cm</Left>
         <Height>1.2cm</Height>
-        <Width>15.86051cm</Width>
+        <Width>15.8605cm</Width>
         <ZIndex>10</ZIndex>
         <Style>
           <Border>
@@ -1815,6 +1815,40 @@
             <Style>None</Style>
           </Border>
           <BackgroundColor>Silver</BackgroundColor>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox63">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>JOSE ALFREDO OTERO OVIEDO</Value>
+                <Style>
+                  <FontSize>9pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox51</rd:DefaultName>
+        <Top>9.86855cm</Top>
+        <Left>0.31301cm</Left>
+        <Height>0.6cm</Height>
+        <Width>6.49521cm</Width>
+        <ZIndex>23</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
           <PaddingTop>2pt</PaddingTop>
