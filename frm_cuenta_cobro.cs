@@ -147,7 +147,7 @@ namespace SBX_ERP
                                     DateTime Fechamod = Convert.ToDateTime(rows_2["cl_fecha_modificacion"]);
                                     cl_Cuenta_Cobro2.cl_fecha_modificacion = Fechamod.ToString("yyyy-MM-dd");
                                 }
-                                if (rows_2["cl_tipo_item"].ToString() == "Servicio")
+                                if (rows_2["cl_tipo_item"].ToString() == "Servicio" || rows_2["cl_tipo_item"].ToString() == "TOT")
                                 {
                                     //servicios
 

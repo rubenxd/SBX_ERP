@@ -341,7 +341,8 @@ namespace SBX_ERP
             this.cbx_tipo_item.FormattingEnabled = true;
             this.cbx_tipo_item.Items.AddRange(new object[] {
             "Producto",
-            "Servicio"});
+            "Servicio",
+            "TOT"});
             this.cbx_tipo_item.Location = new System.Drawing.Point(113, 212);
             this.cbx_tipo_item.Name = "cbx_tipo_item";
             this.cbx_tipo_item.Size = new System.Drawing.Size(197, 21);
