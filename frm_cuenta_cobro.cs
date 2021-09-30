@@ -88,6 +88,7 @@ namespace SBX_ERP
                             cl_Cuenta_Cobro.ConseOS = "0";
                         }
                         cl_Cuenta_Cobro.cl_km = txt_km.Text;
+                        cl_Cuenta_Cobro.cl_estado = "1";
                  v_ok = cl_Cuenta_Cobro.mtd_registrar();
                         if (v_ok)
                         {

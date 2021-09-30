@@ -70,6 +70,8 @@ namespace SBX_ERP.model
         public string cl_doc_nuevo { get; set; }
         public string cl_conse_nuevo { get; set; }
         public string cl_nota_anulacion { get; set; }
+
+        public string cl_estado { get; set; }
         public DataTable mtd_consultar_x_placa()
         {
             v_query = " select " +
@@ -88,7 +90,7 @@ namespace SBX_ERP.model
         }
         private void mtd_asignaParametros()
         {
-            Parametros = new SqlParameter[13];
+            Parametros = new SqlParameter[14];
 
             Parametros[0] = new SqlParameter();
             Parametros[0].ParameterName = "@cl_documento";
@@ -154,11 +156,16 @@ namespace SBX_ERP.model
             Parametros[12].ParameterName = "@km";
             Parametros[12].SqlDbType = SqlDbType.VarChar;
             Parametros[12].SqlValue = cl_km;
+
+            Parametros[13] = new SqlParameter();
+            Parametros[13].ParameterName = "@cl_estado";
+            Parametros[13].SqlDbType = SqlDbType.Int;
+            Parametros[13].SqlValue = cl_estado;
         }
         public Boolean mtd_registrar()
         {
-            v_query = " INSERT INTO tbl_cuenta_cobro (cl_documento,cl_consecutivo,cl_vehiculo,cl_item,cl_cantidad,cl_precioVenta,cl_descuento,cl_fecha_creacion,cl_fecha_modificacion,cl_usuario,cl_costo,cl_nota,km)" +
-                      " VALUES (@cl_documento,@cl_consecutivo,@cl_vehiculo,@cl_item,@cl_cantidad,@cl_precioVenta,@cl_descuento,@cl_fecha_creacion,@cl_fecha_modificacion,@cl_usuario,@cl_costo,@cl_nota,@km)";
+            v_query = " INSERT INTO tbl_cuenta_cobro (cl_documento,cl_consecutivo,cl_vehiculo,cl_item,cl_cantidad,cl_precioVenta,cl_descuento,cl_fecha_creacion,cl_fecha_modificacion,cl_usuario,cl_costo,cl_nota,km,cl_estado)" +
+                      " VALUES (@cl_documento,@cl_consecutivo,@cl_vehiculo,@cl_item,@cl_cantidad,@cl_precioVenta,@cl_descuento,@cl_fecha_creacion,@cl_fecha_modificacion,@cl_usuario,@cl_costo,@cl_nota,@km,@cl_estado)";
 
             mtd_asignaParametros();
             v_ok = cls_datos.mtd_registrar(Parametros, v_query);
