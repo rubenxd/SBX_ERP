@@ -473,5 +473,12 @@ namespace SBX_ERP
             mtd_calculos();
             this.Cursor = Cursors.Default;
         }
+
+        private void frm_orden_servicio_Load(object sender, EventArgs e)
+        {
+
+            //this.reportViewer1.RefreshReport();
+            //this.reportViewer2.RefreshReport();
+        }
     }
 }

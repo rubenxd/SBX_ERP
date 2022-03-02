@@ -31,7 +31,7 @@ namespace SBX_ERP
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_orden_servicio));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnl_menu = new System.Windows.Forms.Panel();
             this.btn_cotizacion = new System.Windows.Forms.Button();
             this.btn_quitar_uno = new System.Windows.Forms.Button();
@@ -39,6 +39,8 @@ namespace SBX_ERP
             this.btn_guardar = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txt_km = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txt_nota = new System.Windows.Forms.TextBox();
             this.lbl_placa = new System.Windows.Forms.Label();
@@ -67,8 +69,6 @@ namespace SBX_ERP
             this.cl_total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label4 = new System.Windows.Forms.Label();
             this.txt_total = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txt_km = new System.Windows.Forms.TextBox();
             this.pnl_menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -197,6 +197,27 @@ namespace SBX_ERP
             this.groupBox1.TabIndex = 50;
             this.groupBox1.TabStop = false;
             // 
+            // label8
+            // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(448, 22);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(27, 16);
+            this.label8.TabIndex = 67;
+            this.label8.Text = "Km";
+            // 
+            // txt_km
+            // 
+            this.txt_km.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txt_km.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_km.Location = new System.Drawing.Point(515, 22);
+            this.txt_km.MaxLength = 50;
+            this.txt_km.Name = "txt_km";
+            this.txt_km.Size = new System.Drawing.Size(105, 23);
+            this.txt_km.TabIndex = 66;
+            // 
             // label7
             // 
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -204,7 +225,7 @@ namespace SBX_ERP
             this.label7.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(59, 120);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(37, 16);
+            this.label7.Size = new System.Drawing.Size(36, 16);
             this.label7.TabIndex = 65;
             this.label7.Text = "Nota";
             // 
@@ -225,7 +246,7 @@ namespace SBX_ERP
             this.lbl_placa.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_placa.Location = new System.Drawing.Point(267, 22);
             this.lbl_placa.Name = "lbl_placa";
-            this.lbl_placa.Size = new System.Drawing.Size(43, 16);
+            this.lbl_placa.Size = new System.Drawing.Size(42, 16);
             this.lbl_placa.TabIndex = 61;
             this.lbl_placa.Text = "Placa";
             this.lbl_placa.Visible = false;
@@ -237,7 +258,7 @@ namespace SBX_ERP
             this.label5.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(59, 62);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(90, 16);
+            this.label5.Size = new System.Drawing.Size(89, 16);
             this.label5.TabIndex = 60;
             this.label5.Text = "Identificacion";
             // 
@@ -259,7 +280,7 @@ namespace SBX_ERP
             this.label6.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(59, 91);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(57, 16);
+            this.label6.Size = new System.Drawing.Size(56, 16);
             this.label6.TabIndex = 58;
             this.label6.Text = "Nombre";
             // 
@@ -281,7 +302,7 @@ namespace SBX_ERP
             this.label3.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(448, 59);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(54, 16);
+            this.label3.Size = new System.Drawing.Size(53, 16);
             this.label3.TabIndex = 54;
             this.label3.Text = "Modelo";
             // 
@@ -303,7 +324,7 @@ namespace SBX_ERP
             this.label2.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(448, 88);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 16);
+            this.label2.Size = new System.Drawing.Size(60, 16);
             this.label2.TabIndex = 52;
             this.label2.Text = "Vehiculo";
             // 
@@ -325,7 +346,7 @@ namespace SBX_ERP
             this.label1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(59, 22);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 16);
+            this.label1.Size = new System.Drawing.Size(42, 16);
             this.label1.TabIndex = 50;
             this.label1.Text = "Placa";
             // 
@@ -397,14 +418,14 @@ namespace SBX_ERP
             this.cl_precioVenta,
             this.cl_descuento,
             this.cl_total});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DarkSeaGreen;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtg_venta.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.DarkSeaGreen;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtg_venta.DefaultCellStyle = dataGridViewCellStyle3;
             this.dtg_venta.Location = new System.Drawing.Point(10, 48);
             this.dtg_venta.Name = "dtg_venta";
             this.dtg_venta.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -485,27 +506,6 @@ namespace SBX_ERP
             this.txt_total.Size = new System.Drawing.Size(351, 30);
             this.txt_total.TabIndex = 55;
             // 
-            // label8
-            // 
-            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(448, 22);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(28, 16);
-            this.label8.TabIndex = 67;
-            this.label8.Text = "Km";
-            // 
-            // txt_km
-            // 
-            this.txt_km.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt_km.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_km.Location = new System.Drawing.Point(515, 22);
-            this.txt_km.MaxLength = 50;
-            this.txt_km.Name = "txt_km";
-            this.txt_km.Size = new System.Drawing.Size(105, 23);
-            this.txt_km.TabIndex = 66;
-            // 
             // frm_orden_servicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -522,6 +522,7 @@ namespace SBX_ERP
             this.Name = "frm_orden_servicio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Orden servicio";
+            this.Load += new System.EventHandler(this.frm_orden_servicio_Load);
             this.pnl_menu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.groupBox1.ResumeLayout(false);
