@@ -227,7 +227,7 @@ namespace SBX_ERP
         private void btn_buscar_producto_Click(object sender, EventArgs e)
         {
             frm_busquedas frm_Busquedas = new frm_busquedas();
-            frm_Busquedas.Modulo = 5;
+            frm_Busquedas.Modulo = 7;
             frm_Busquedas.Enviainfo += new frm_busquedas.EnviarInfo(mtd_carga_datos);
             frm_Busquedas.ShowDialog();
         }
@@ -236,6 +236,8 @@ namespace SBX_ERP
             this.Cursor = Cursors.WaitCursor;            
             cls_Item.v_buscar = vl_identificacion;
             v_dt = cls_Item.mtd_consultar();
+            double Costo = 0;
+            double PrecioVenta = 0;
             foreach (DataRow item in v_dt.Rows)
             {
                 txt_item.Text = item["cl_item"].ToString();
@@ -245,8 +247,10 @@ namespace SBX_ERP
                 txt_codigo_barras.Text = item["cl_codigo_barras"].ToString();
                 cbx_estado.Text = item["cl_estado"].ToString();
                 cbx_tipo_item.Text = item["cl_tipo_item"].ToString();
-                txt_costo.Text = item["cl_costo"].ToString();
-                txt_precio_venta.Text = item["cl_PrecioVenta"].ToString();
+                Costo = Convert.ToDouble(item["cl_costo"]);
+                txt_costo.Text = Costo.ToString("N0");
+                PrecioVenta = Convert.ToDouble(item["cl_PrecioVenta"]);
+                txt_precio_venta.Text = PrecioVenta.ToString();
                 txt_stock_minimo.Text = item["cl_stock_minimo"].ToString();
                 txt_stock_maximo.Text = item["cl_stock_maximo"].ToString();
                 txt_cantidad.Text = "";

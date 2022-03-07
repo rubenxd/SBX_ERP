@@ -326,7 +326,8 @@ namespace SBX_ERP
             foreach (DataGridViewRow rows in dtg_venta.Rows)
             {
                 Venta = (Convert.ToDouble(rows.Cells["cl_cantidad"].Value) * Convert.ToDouble(rows.Cells["cl_precioVenta"].Value));
-                descuento = Convert.ToDouble(rows.Cells["cl_descuento"].Value);
+                descuento = Venta * (Convert.ToDouble(rows.Cells["cl_descuento_porcentaje"].Value) / 100);
+                rows.Cells["cl_descuento"].Value = descuento.ToString("N0");
                 subtotal = Venta - descuento;
                 rows.Cells["cl_total"].Value = subtotal.ToString("N");
                 Total += subtotal;
@@ -350,7 +351,7 @@ namespace SBX_ERP
         private void btn_buscar_items_Click(object sender, EventArgs e)
         {
             frm_busquedas frm_Busquedas = new frm_busquedas();
-            frm_Busquedas.Modulo = 5;
+            frm_Busquedas.Modulo = 7;
             frm_Busquedas.Enviainfo += new frm_busquedas.EnviarInfo(mtd_carga_datos_items);
             frm_Busquedas.ShowDialog();
         }
@@ -564,6 +565,15 @@ namespace SBX_ERP
                 else if (!cls_Global.IsNumericDouble(row.Cells["cl_descuento"].Value.ToString()))
                 {
                     row.Cells["cl_descuento"].Value = "0";
+                }
+
+                if (row.Cells["cl_descuento_porcentaje"].Value == null)
+                {
+                    row.Cells["cl_descuento_porcentaje"].Value = "0";
+                }
+                else if (!cls_Global.IsNumericDouble(row.Cells["cl_descuento_porcentaje"].Value.ToString()))
+                {
+                    row.Cells["cl_descuento_porcentaje"].Value = "0";
                 }
             }
             mtd_calculos();

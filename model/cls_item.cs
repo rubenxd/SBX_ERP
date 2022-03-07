@@ -28,7 +28,8 @@ namespace SBX_ERP.model
         public string cl_fecha_modificacion { get; set; }
         public string cl_usuario { get; set; }
         public string cl_movimiento { get; set; }
-
+        public string v_Tipo_Item { get; set; }
+        
         //Kardex
         public string cl_Accion { get; set; }
         public string cl_codigo_item { get; set; }
@@ -210,13 +211,49 @@ namespace SBX_ERP.model
         }
         public DataTable mtd_consultar()
         {
-            v_query = " SELECT * FROM tbl_items WHERE cl_item = '" + v_buscar + "' ";
+            //v_query = " SELECT * FROM tbl_items WHERE cl_item = '" + v_buscar + "' ";
+            v_query = " select "+
+                        " it.cl_codigo_pk, " +
+                        " it.cl_item , " +
+                        " it.cl_nombre , " +
+                        " Sum(case when k.cl_Movimiento = 'Salida -' then  k.cl_cantidad * -1 else k.cl_cantidad end) Stock, " +
+                        " it.cl_descripcion , " +
+                        " it.cl_referencia , " +
+                        " it.cl_codigo_barras , " +
+                        " it.cl_estado , " +
+                        " it.cl_tipo_item , " +
+                        " it.cl_costo , " +
+                        " it.cl_precioVenta , " +
+                        " it.cl_stock_minimo , " +
+                        " it.cl_stock_maximo , " +
+                        " it.cl_fecha_creacion , " +
+                        " it.cl_fecha_modificacion , " +
+                        " it.cl_usuario " +
+                        " from tbl_kardex k " +
+                        " inner join tbl_items it on k.cl_item = it.cl_codigo_pk " +
+                        " where it.cl_item = '" + v_buscar + "' " +
+                        " group by " +
+                        " it.cl_codigo_pk , " +
+                        " it.cl_item , " +
+                        " it.cl_nombre , " +
+                        " it.cl_descripcion , " +
+                        " it.cl_referencia , " +
+                        " it.cl_codigo_barras , " +
+                        " it.cl_estado , " +
+                        " it.cl_tipo_item , " +
+                        " it.cl_costo , " +
+                        " it.cl_precioVenta , " +
+                        " it.cl_stock_minimo , " +
+                        " it.cl_stock_maximo , " +
+                        " it.cl_fecha_creacion , " +
+                        " it.cl_fecha_modificacion , " +
+                        " it.cl_usuario";
             v_dt = cls_datos.mtd_consultar(v_query);
             return v_dt;
         }
         public DataTable mtd_consultar_ayuda()
         {
-            v_query = " sp_consultar_items_ayuda '" + v_buscar + "' ";
+            v_query = " sp_consultar_items_ayuda '" + v_buscar + "', '" + v_Tipo_Item + "' ";
             v_dt = cls_datos.mtd_consultar(v_query);
             return v_dt;
         }

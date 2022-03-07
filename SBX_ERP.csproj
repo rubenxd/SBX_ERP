@@ -52,6 +52,10 @@
     <ApplicationIcon>SBX 1.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Office.Interop.Excel">
+      <HintPath>..\..\Users\Ruben\Desktop\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1449.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
     </Reference>
@@ -141,6 +145,12 @@
     </Compile>
     <Compile Include="frm_cuenta_cobro.Designer.cs">
       <DependentUpon>frm_cuenta_cobro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_exportar_excel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_exportar_excel.Designer.cs">
+      <DependentUpon>frm_exportar_excel.cs</DependentUpon>
     </Compile>
     <Compile Include="frm_formatos.cs">
       <SubType>Form</SubType>
@@ -244,6 +254,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_cuenta_cobro.resx">
       <DependentUpon>frm_cuenta_cobro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_exportar_excel.resx">
+      <DependentUpon>frm_exportar_excel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_formatos.resx">
       <DependentUpon>frm_formatos.cs</DependentUpon>

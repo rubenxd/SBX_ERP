@@ -89,7 +89,9 @@ namespace SBX_ERP
                         }
                         cl_Cuenta_Cobro.cl_km = txt_km.Text;
                         cl_Cuenta_Cobro.cl_estado = "1";
-                 v_ok = cl_Cuenta_Cobro.mtd_registrar();
+                        cl_Cuenta_Cobro.cl_Accion = "INSERT-ORDEN-COBRO";
+                        cl_Cuenta_Cobro.cl_movimiento = "Salida -";
+                        v_ok = cl_Cuenta_Cobro.mtd_registrar();
                         if (v_ok)
                         {
                             contadorCorrecto++;
@@ -263,12 +265,14 @@ namespace SBX_ERP
             double Venta = 0;
             double subtotal = 0;
             double descuento = 0;
+            
             double Total = 0;
 
             foreach (DataGridViewRow rows in dtg_venta.Rows)
             {
                 Venta = (Convert.ToDouble(rows.Cells["cl_cantidad"].Value) * Convert.ToDouble(rows.Cells["cl_precioVenta"].Value));
-                descuento = Convert.ToDouble(rows.Cells["cl_descuento"].Value);
+                descuento = Venta * (Convert.ToDouble(rows.Cells["cl_descuento_porcentaje"].Value) / 100);
+                rows.Cells["cl_descuento"].Value = descuento.ToString("N0");
                 subtotal = Venta - descuento;
                 rows.Cells["cl_total"].Value = subtotal.ToString("N");
                 Total += subtotal;
@@ -472,18 +476,44 @@ namespace SBX_ERP
                 {
                     v_dt = cls_Item.mtd_consultar();
                     DataRow v_row = v_dt.Rows[0];
-                    dtg_venta.Rows.Add(1);
-                    v_contador = dtg_venta.Rows.Count;
-                    dtg_venta.Rows[v_contador - 1].Cells["cl_item"].Value = v_row["cl_item"];
-                    dtg_venta.Rows[v_contador - 1].Cells["cl_Nombre"].Value = v_row["cl_Nombre"];
-                    dtg_venta.Rows[v_contador - 1].Cells["cl_descripcion"].Value = v_row["cl_descripcion"];
-                    dtg_venta.Rows[v_contador - 1].Cells["cl_referencia"].Value = v_row["cl_referencia"];
-                    dtg_venta.Rows[v_contador - 1].Cells["cl_cantidad"].Value = "1";
-                    double precioVenta = Convert.ToDouble(v_row["cl_precioVenta"]);
-                    dtg_venta.Rows[v_contador - 1].Cells["cl_costo"].Value = v_row["cl_costo"];
-                    dtg_venta.Rows[v_contador - 1].Cells["cl_precioVenta"].Value = precioVenta.ToString("N");
-                    dtg_venta.Rows[v_contador - 1].Cells["cl_descuento"].Value = "0";
-                    dtg_venta.Rows[v_contador - 1].Cells["cl_total"].Value = precioVenta.ToString("N");
+                    if (v_row["cl_tipo_item"].ToString() == "Producto")
+                    {
+                        if (Convert.ToInt32(v_row["Stock"]) > 0)
+                        {
+                            dtg_venta.Rows.Add(1);
+                            v_contador = dtg_venta.Rows.Count;
+                            dtg_venta.Rows[v_contador - 1].Cells["cl_item"].Value = v_row["cl_item"];
+                            dtg_venta.Rows[v_contador - 1].Cells["cl_Nombre"].Value = v_row["cl_Nombre"];
+                            dtg_venta.Rows[v_contador - 1].Cells["cl_descripcion"].Value = v_row["cl_descripcion"];
+                            dtg_venta.Rows[v_contador - 1].Cells["cl_referencia"].Value = v_row["cl_referencia"];
+                            dtg_venta.Rows[v_contador - 1].Cells["cl_cantidad"].Value = "1";
+                            double precioVenta = Convert.ToDouble(v_row["cl_precioVenta"]);
+                            dtg_venta.Rows[v_contador - 1].Cells["cl_costo"].Value = v_row["cl_costo"];
+                            dtg_venta.Rows[v_contador - 1].Cells["cl_precioVenta"].Value = precioVenta.ToString("N");
+                            dtg_venta.Rows[v_contador - 1].Cells["cl_descuento"].Value = "0";
+                            dtg_venta.Rows[v_contador - 1].Cells["cl_total"].Value = precioVenta.ToString("N");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Item sin existencias", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                    else
+                    {
+                        dtg_venta.Rows.Add(1);
+                        v_contador = dtg_venta.Rows.Count;
+                        dtg_venta.Rows[v_contador - 1].Cells["cl_item"].Value = v_row["cl_item"];
+                        dtg_venta.Rows[v_contador - 1].Cells["cl_Nombre"].Value = v_row["cl_Nombre"];
+                        dtg_venta.Rows[v_contador - 1].Cells["cl_descripcion"].Value = v_row["cl_descripcion"];
+                        dtg_venta.Rows[v_contador - 1].Cells["cl_referencia"].Value = v_row["cl_referencia"];
+                        dtg_venta.Rows[v_contador - 1].Cells["cl_cantidad"].Value = "1";
+                        double precioVenta = Convert.ToDouble(v_row["cl_precioVenta"]);
+                        dtg_venta.Rows[v_contador - 1].Cells["cl_costo"].Value = v_row["cl_costo"];
+                        dtg_venta.Rows[v_contador - 1].Cells["cl_precioVenta"].Value = precioVenta.ToString("N");
+                        dtg_venta.Rows[v_contador - 1].Cells["cl_descuento"].Value = "0";
+                        dtg_venta.Rows[v_contador - 1].Cells["cl_total"].Value = precioVenta.ToString("N");
+                    }
+                                
                 }
                 else
                 {
@@ -506,18 +536,43 @@ namespace SBX_ERP
                 {
                     v_dt = cls_Item.mtd_consultar();
                     DataRow v_row = v_dt.Rows[0];
-                    dtg_venta.Rows.Add(1);
-                    v_contador = dtg_venta.Rows.Count;
-                    dtg_venta.Rows[v_contador - 1].Cells["cl_item"].Value = v_row["cl_item"];
-                    dtg_venta.Rows[v_contador - 1].Cells["cl_Nombre"].Value = v_row["cl_Nombre"];
-                    dtg_venta.Rows[v_contador - 1].Cells["cl_descripcion"].Value = v_row["cl_descripcion"];
-                    dtg_venta.Rows[v_contador - 1].Cells["cl_referencia"].Value = v_row["cl_referencia"];
-                    dtg_venta.Rows[v_contador - 1].Cells["cl_cantidad"].Value = "1";
-                    double precioVenta = Convert.ToDouble(v_row["cl_precioVenta"]);
-                    dtg_venta.Rows[v_contador - 1].Cells["cl_costo"].Value = v_row["cl_costo"];
-                    dtg_venta.Rows[v_contador - 1].Cells["cl_precioVenta"].Value = precioVenta.ToString("N");
-                    dtg_venta.Rows[v_contador - 1].Cells["cl_descuento"].Value = "0";
-                    dtg_venta.Rows[v_contador - 1].Cells["cl_total"].Value = precioVenta.ToString("N");
+                    if (v_row["cl_tipo_item"].ToString() == "Producto")
+                    {
+                        if (Convert.ToInt32(v_row["Stock"]) > 0)
+                        {
+                            dtg_venta.Rows.Add(1);
+                            v_contador = dtg_venta.Rows.Count;
+                            dtg_venta.Rows[v_contador - 1].Cells["cl_item"].Value = v_row["cl_item"];
+                            dtg_venta.Rows[v_contador - 1].Cells["cl_Nombre"].Value = v_row["cl_Nombre"];
+                            dtg_venta.Rows[v_contador - 1].Cells["cl_descripcion"].Value = v_row["cl_descripcion"];
+                            dtg_venta.Rows[v_contador - 1].Cells["cl_referencia"].Value = v_row["cl_referencia"];
+                            dtg_venta.Rows[v_contador - 1].Cells["cl_cantidad"].Value = "1";
+                            double precioVenta = Convert.ToDouble(v_row["cl_precioVenta"]);
+                            dtg_venta.Rows[v_contador - 1].Cells["cl_costo"].Value = v_row["cl_costo"];
+                            dtg_venta.Rows[v_contador - 1].Cells["cl_precioVenta"].Value = precioVenta.ToString("N");
+                            dtg_venta.Rows[v_contador - 1].Cells["cl_descuento"].Value = "0";
+                            dtg_venta.Rows[v_contador - 1].Cells["cl_total"].Value = precioVenta.ToString("N");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Item sin existencias", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                    else
+                    {
+                        dtg_venta.Rows.Add(1);
+                        v_contador = dtg_venta.Rows.Count;
+                        dtg_venta.Rows[v_contador - 1].Cells["cl_item"].Value = v_row["cl_item"];
+                        dtg_venta.Rows[v_contador - 1].Cells["cl_Nombre"].Value = v_row["cl_Nombre"];
+                        dtg_venta.Rows[v_contador - 1].Cells["cl_descripcion"].Value = v_row["cl_descripcion"];
+                        dtg_venta.Rows[v_contador - 1].Cells["cl_referencia"].Value = v_row["cl_referencia"];
+                        dtg_venta.Rows[v_contador - 1].Cells["cl_cantidad"].Value = "1";
+                        double precioVenta = Convert.ToDouble(v_row["cl_precioVenta"]);
+                        dtg_venta.Rows[v_contador - 1].Cells["cl_costo"].Value = v_row["cl_costo"];
+                        dtg_venta.Rows[v_contador - 1].Cells["cl_precioVenta"].Value = precioVenta.ToString("N");
+                        dtg_venta.Rows[v_contador - 1].Cells["cl_descuento"].Value = "0";
+                        dtg_venta.Rows[v_contador - 1].Cells["cl_total"].Value = precioVenta.ToString("N");
+                    }
                 }
                 else
                 {
@@ -611,8 +666,19 @@ namespace SBX_ERP
                 {
                     row.Cells["cl_descuento"].Value = "0";
                 }
+                
+                    if (row.Cells["cl_descuento_porcentaje"].Value == null)
+                {
+                    row.Cells["cl_descuento_porcentaje"].Value = "0";
+                }
+                else if (!cls_Global.IsNumericDouble(row.Cells["cl_descuento_porcentaje"].Value.ToString()))
+                {
+                    row.Cells["cl_descuento_porcentaje"].Value = "0";
+                }
             }
             mtd_calculos();
         }
+
+       
     }
 }

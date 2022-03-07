@@ -98,18 +98,21 @@ namespace SBX_ERP
             {
                 v_dt = cls_Item.mtd_consultar();
                 DataRow v_row = v_dt.Rows[0];
-                dtg_venta.Rows.Add(1);
-                v_contador = dtg_venta.Rows.Count;
-                dtg_venta.Rows[v_contador - 1].Cells["cl_item"].Value = v_row["cl_item"];
-                dtg_venta.Rows[v_contador - 1].Cells["cl_Nombre"].Value = v_row["cl_Nombre"];
-                dtg_venta.Rows[v_contador - 1].Cells["cl_descripcion"].Value = v_row["cl_descripcion"];
-                dtg_venta.Rows[v_contador - 1].Cells["cl_referencia"].Value = v_row["cl_referencia"];
-                dtg_venta.Rows[v_contador - 1].Cells["cl_cantidad"].Value = "1";
-                double precioVenta = Convert.ToDouble(v_row["cl_precioVenta"]);
-                dtg_venta.Rows[v_contador - 1].Cells["cl_costo"].Value = v_row["cl_costo"];
-                dtg_venta.Rows[v_contador - 1].Cells["cl_precioVenta"].Value = precioVenta.ToString("N");
-                dtg_venta.Rows[v_contador - 1].Cells["cl_descuento"].Value = "0";
-                dtg_venta.Rows[v_contador - 1].Cells["cl_total"].Value = precioVenta.ToString("N");
+            
+                    dtg_venta.Rows.Add(1);
+                    v_contador = dtg_venta.Rows.Count;
+                    dtg_venta.Rows[v_contador - 1].Cells["cl_item"].Value = v_row["cl_item"];
+                    dtg_venta.Rows[v_contador - 1].Cells["cl_Nombre"].Value = v_row["cl_Nombre"];
+                    dtg_venta.Rows[v_contador - 1].Cells["cl_descripcion"].Value = v_row["cl_descripcion"];
+                    dtg_venta.Rows[v_contador - 1].Cells["cl_referencia"].Value = v_row["cl_referencia"];
+                    dtg_venta.Rows[v_contador - 1].Cells["cl_cantidad"].Value = "1";
+                    double precioVenta = Convert.ToDouble(v_row["cl_precioVenta"]);
+                    double costo = Convert.ToDouble(v_row["cl_costo"]);
+                    dtg_venta.Rows[v_contador - 1].Cells["cl_costo"].Value = costo.ToString("N0");
+                    dtg_venta.Rows[v_contador - 1].Cells["cl_precioVenta"].Value = precioVenta.ToString("N0");
+                    dtg_venta.Rows[v_contador - 1].Cells["cl_descuento"].Value = "0";
+                    dtg_venta.Rows[v_contador - 1].Cells["cl_total"].Value = precioVenta.ToString("N0");
+                
             }
             else
             {
@@ -131,18 +134,46 @@ namespace SBX_ERP
                 {
                     v_dt = cls_Item.mtd_consultar();
                     DataRow v_row = v_dt.Rows[0];
-                    dtg_venta.Rows.Add(1);
-                    v_contador = dtg_venta.Rows.Count;
-                    dtg_venta.Rows[v_contador - 1].Cells["cl_item"].Value = v_row["cl_item"];
-                    dtg_venta.Rows[v_contador - 1].Cells["cl_Nombre"].Value = v_row["cl_Nombre"];
-                    dtg_venta.Rows[v_contador - 1].Cells["cl_descripcion"].Value = v_row["cl_descripcion"];
-                    dtg_venta.Rows[v_contador - 1].Cells["cl_referencia"].Value = v_row["cl_referencia"];
-                    dtg_venta.Rows[v_contador - 1].Cells["cl_cantidad"].Value = "1";
-                    double precioVenta = Convert.ToDouble(v_row["cl_precioVenta"]);
-                    dtg_venta.Rows[v_contador - 1].Cells["cl_costo"].Value = v_row["cl_costo"];
-                    dtg_venta.Rows[v_contador - 1].Cells["cl_precioVenta"].Value = precioVenta.ToString("N");
-                    dtg_venta.Rows[v_contador - 1].Cells["cl_descuento"].Value = "0";                  
-                    dtg_venta.Rows[v_contador - 1].Cells["cl_total"].Value = precioVenta.ToString("N");
+
+                    if (v_row["cl_tipo_item"].ToString() == "Producto")
+                    {
+                        if (Convert.ToInt32(v_row["Stock"]) > 0)
+                        {
+                            dtg_venta.Rows.Add(1);
+                            v_contador = dtg_venta.Rows.Count;
+                            dtg_venta.Rows[v_contador - 1].Cells["cl_item"].Value = v_row["cl_item"];
+                            dtg_venta.Rows[v_contador - 1].Cells["cl_Nombre"].Value = v_row["cl_Nombre"];
+                            dtg_venta.Rows[v_contador - 1].Cells["cl_descripcion"].Value = v_row["cl_descripcion"];
+                            dtg_venta.Rows[v_contador - 1].Cells["cl_referencia"].Value = v_row["cl_referencia"];
+                            dtg_venta.Rows[v_contador - 1].Cells["cl_cantidad"].Value = "1";
+                            double precioVenta = Convert.ToDouble(v_row["cl_precioVenta"]);
+                            double costo = Convert.ToDouble(v_row["cl_costo"]);
+                            dtg_venta.Rows[v_contador - 1].Cells["cl_costo"].Value = costo.ToString("N0");
+                            dtg_venta.Rows[v_contador - 1].Cells["cl_precioVenta"].Value = precioVenta.ToString("N0");
+                            dtg_venta.Rows[v_contador - 1].Cells["cl_descuento"].Value = "0";
+                            dtg_venta.Rows[v_contador - 1].Cells["cl_total"].Value = precioVenta.ToString("N0");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Item sin existencias", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                    else
+                    {
+                        dtg_venta.Rows.Add(1);
+                        v_contador = dtg_venta.Rows.Count;
+                        dtg_venta.Rows[v_contador - 1].Cells["cl_item"].Value = v_row["cl_item"];
+                        dtg_venta.Rows[v_contador - 1].Cells["cl_Nombre"].Value = v_row["cl_Nombre"];
+                        dtg_venta.Rows[v_contador - 1].Cells["cl_descripcion"].Value = v_row["cl_descripcion"];
+                        dtg_venta.Rows[v_contador - 1].Cells["cl_referencia"].Value = v_row["cl_referencia"];
+                        dtg_venta.Rows[v_contador - 1].Cells["cl_cantidad"].Value = "1";
+                        double precioVenta = Convert.ToDouble(v_row["cl_precioVenta"]);
+                        double costo = Convert.ToDouble(v_row["cl_costo"]);
+                        dtg_venta.Rows[v_contador - 1].Cells["cl_costo"].Value = costo.ToString("N0");
+                        dtg_venta.Rows[v_contador - 1].Cells["cl_precioVenta"].Value = precioVenta.ToString("N");
+                        dtg_venta.Rows[v_contador - 1].Cells["cl_descuento"].Value = "0";
+                        dtg_venta.Rows[v_contador - 1].Cells["cl_total"].Value = precioVenta.ToString("N");
+                    }                
                 }
                 else
                 {
@@ -165,17 +196,46 @@ namespace SBX_ERP
                 {
                     v_dt = cls_Item.mtd_consultar();
                     DataRow v_row = v_dt.Rows[0];
-                    dtg_venta.Rows.Add(1);
-                    v_contador = dtg_venta.Rows.Count;
-                    dtg_venta.Rows[v_contador - 1].Cells["cl_item"].Value = v_row["cl_item"];
-                    dtg_venta.Rows[v_contador - 1].Cells["cl_Nombre"].Value = v_row["cl_Nombre"];
-                    dtg_venta.Rows[v_contador - 1].Cells["cl_descripcion"].Value = v_row["cl_descripcion"];
-                    dtg_venta.Rows[v_contador - 1].Cells["cl_referencia"].Value = v_row["cl_referencia"];
-                    dtg_venta.Rows[v_contador - 1].Cells["cl_cantidad"].Value = "1";
-                    double pv = Convert.ToDouble(v_row["cl_precioVenta"]);
-                    dtg_venta.Rows[v_contador - 1].Cells["cl_precioVenta"].Value = pv.ToString("N");
-                    dtg_venta.Rows[v_contador - 1].Cells["cl_descuento"].Value = "0";
-                    dtg_venta.Rows[v_contador - 1].Cells["cl_total"].Value = pv.ToString("N");
+                    if (v_row["cl_tipo_item"].ToString() == "Producto")
+                    {
+                        if (Convert.ToInt32(v_row["Stock"]) > 0)
+                        {
+                            dtg_venta.Rows.Add(1);
+                            v_contador = dtg_venta.Rows.Count;
+                            dtg_venta.Rows[v_contador - 1].Cells["cl_item"].Value = v_row["cl_item"];
+                            dtg_venta.Rows[v_contador - 1].Cells["cl_Nombre"].Value = v_row["cl_Nombre"];
+                            dtg_venta.Rows[v_contador - 1].Cells["cl_descripcion"].Value = v_row["cl_descripcion"];
+                            dtg_venta.Rows[v_contador - 1].Cells["cl_referencia"].Value = v_row["cl_referencia"];
+                            dtg_venta.Rows[v_contador - 1].Cells["cl_cantidad"].Value = "1";
+                            double pv = Convert.ToDouble(v_row["cl_precioVenta"]);
+                            dtg_venta.Rows[v_contador - 1].Cells["cl_precioVenta"].Value = pv.ToString("N");
+                            double costo = Convert.ToDouble(v_row["cl_costo"]);
+                            dtg_venta.Rows[v_contador - 1].Cells["cl_costo"].Value = costo.ToString("N0");
+                            dtg_venta.Rows[v_contador - 1].Cells["cl_descuento"].Value = "0";
+                            dtg_venta.Rows[v_contador - 1].Cells["cl_total"].Value = pv.ToString("N");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Item sin existencias", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                    else
+                    {
+                        dtg_venta.Rows.Add(1);
+                        v_contador = dtg_venta.Rows.Count;
+                        dtg_venta.Rows[v_contador - 1].Cells["cl_item"].Value = v_row["cl_item"];
+                        dtg_venta.Rows[v_contador - 1].Cells["cl_Nombre"].Value = v_row["cl_Nombre"];
+                        dtg_venta.Rows[v_contador - 1].Cells["cl_descripcion"].Value = v_row["cl_descripcion"];
+                        dtg_venta.Rows[v_contador - 1].Cells["cl_referencia"].Value = v_row["cl_referencia"];
+                        dtg_venta.Rows[v_contador - 1].Cells["cl_cantidad"].Value = "1";
+                        double pv = Convert.ToDouble(v_row["cl_precioVenta"]);
+                        dtg_venta.Rows[v_contador - 1].Cells["cl_precioVenta"].Value = pv.ToString("N0");
+                        double costo = Convert.ToDouble(v_row["cl_costo"]);
+                        dtg_venta.Rows[v_contador - 1].Cells["cl_costo"].Value = costo.ToString("N0");
+                        dtg_venta.Rows[v_contador - 1].Cells["cl_descuento"].Value = "0";
+                        dtg_venta.Rows[v_contador - 1].Cells["cl_total"].Value = pv.ToString("N0");
+                    }
+                       
                 }
                 else
                 {
@@ -195,7 +255,8 @@ namespace SBX_ERP
             foreach (DataGridViewRow rows in dtg_venta.Rows)
             {
                 Venta = (Convert.ToDouble(rows.Cells["cl_cantidad"].Value) * Convert.ToDouble(rows.Cells["cl_precioVenta"].Value));
-                descuento = Convert.ToDouble(rows.Cells["cl_descuento"].Value);
+                descuento = Venta * (Convert.ToDouble(rows.Cells["cl_descuento_porcentaje"].Value) / 100);
+                rows.Cells["cl_descuento"].Value = descuento.ToString("N0");
                 subtotal = Venta - descuento;
                 rows.Cells["cl_total"].Value = subtotal.ToString("N");
                 Total += subtotal;
@@ -253,8 +314,10 @@ namespace SBX_ERP
                             cls_Orden_Servicio.cl_fecha_creacion = DateTime.Now.ToString();
                             cls_Orden_Servicio.cl_fecha_modificacion = DateTime.Now.ToString();
                             cls_Orden_Servicio.cl_usuario = "1";
-                        cls_Orden_Servicio.cl_nota = txt_nota.Text;
-                        cls_Orden_Servicio.cl_km = txt_km.Text;
+                            cls_Orden_Servicio.cl_nota = txt_nota.Text;
+                            cls_Orden_Servicio.cl_km = txt_km.Text;
+                            cls_Orden_Servicio.cl_Accion = "INSERT-ORDEN-SERVICIO";
+                            cls_Orden_Servicio.cl_movimiento = "Salida -";
                             v_ok = cls_Orden_Servicio.mtd_registrar();
                             if (v_ok)
                             {
@@ -379,6 +442,15 @@ namespace SBX_ERP
                 {
                     row.Cells["cl_descuento"].Value = "0";
                 }
+
+                if (row.Cells["cl_descuento_porcentaje"].Value == null)
+                {
+                    row.Cells["cl_descuento_porcentaje"].Value = "0";
+                }
+                else if (!cls_Global.IsNumericDouble(row.Cells["cl_descuento_porcentaje"].Value.ToString()))
+                {
+                    row.Cells["cl_descuento_porcentaje"].Value = "0";
+                }
             }
             mtd_calculos();
         }
@@ -430,7 +502,8 @@ namespace SBX_ERP
                 dtg_venta.Rows[v_contador - 1].Cells["cl_cantidad"].Value = item["cl_cantidad"];
                 double precioVenta = Convert.ToDouble(item["cl_precioVenta"]);
                 dtg_venta.Rows[v_contador - 1].Cells["cl_precioVenta"].Value = precioVenta.ToString("N");
-                dtg_venta.Rows[v_contador - 1].Cells["cl_costo"].Value = item["cl_costo"];
+                double costo = Convert.ToDouble(item["cl_costo"]);
+                dtg_venta.Rows[v_contador - 1].Cells["cl_costo"].Value = costo.ToString("N0");
                 double cl_descuento = Convert.ToDouble(item["cl_descuento"]);
                 dtg_venta.Rows[v_contador - 1].Cells["cl_descuento"].Value = cl_descuento.ToString("N");
                 dtg_venta.Rows[v_contador - 1].Cells["cl_total"].Value = precioVenta.ToString("N");
@@ -465,7 +538,8 @@ namespace SBX_ERP
                 dtg_venta.Rows[v_contador - 1].Cells["cl_cantidad"].Value = item["cl_cantidad"];
                 double precioVenta = Convert.ToDouble(item["cl_precioVenta"]);
                 dtg_venta.Rows[v_contador - 1].Cells["cl_precioVenta"].Value = precioVenta.ToString("N");
-                dtg_venta.Rows[v_contador - 1].Cells["cl_costo"].Value = item["cl_costo"];
+                double costo = Convert.ToDouble(item["cl_costo"]);
+                dtg_venta.Rows[v_contador - 1].Cells["cl_costo"].Value = costo.ToString("N0");
                 double cl_descuento = Convert.ToDouble(item["cl_descuento"]);
                 dtg_venta.Rows[v_contador - 1].Cells["cl_descuento"].Value = cl_descuento.ToString("N");
                 dtg_venta.Rows[v_contador - 1].Cells["cl_total"].Value = precioVenta.ToString("N");

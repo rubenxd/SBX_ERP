@@ -54,6 +54,9 @@ namespace SBX_ERP.model
         public string cl_direccion { get; set; }
         public string cl_telefonos { get; set; }
         public string cl_Email { get; set; }
+        //
+        public string cl_Accion { get; set; }
+        public string cl_movimiento { get; set; }
 
         public string v_buscar { get; set; }
         public string v_Fecha_inicio { get; set; }
@@ -150,7 +153,61 @@ namespace SBX_ERP.model
 
             mtd_asignaParametros();
             v_ok = cls_datos.mtd_registrar(Parametros, v_query);
+            if (v_ok)
+            {
+                v_query = "";
+                //actualizar kardex
+                v_query = " INSERT INTO tbl_kardex (cl_item,cl_costo,cl_PrecioVenta,cl_cantidad,cl_Accion,cl_Movimiento,cl_fecha_registro,cl_usuario)" +
+                      " VALUES (@cl_item,@cl_costo,@cl_PrecioVenta,@cl_cantidad,@cl_Accion,@cl_Movimiento,@cl_fecha_registro,@cl_usuario)";
+                mtd_asignaParametros_kardex();
+                v_ok = cls_datos.mtd_registrar(Parametros, v_query);
+                return v_ok;
+            }
             return v_ok;
+        }
+        private void mtd_asignaParametros_kardex()
+        {
+            Parametros = new SqlParameter[8];
+
+            Parametros[0] = new SqlParameter();
+            Parametros[0].ParameterName = "@cl_item";
+            Parametros[0].SqlDbType = SqlDbType.VarChar;
+            Parametros[0].SqlValue = cl_item;
+
+            Parametros[1] = new SqlParameter();
+            Parametros[1].ParameterName = "@cl_costo";
+            Parametros[1].SqlDbType = SqlDbType.Money;
+            Parametros[1].SqlValue = cl_costo;
+
+            Parametros[2] = new SqlParameter();
+            Parametros[2].ParameterName = "@cl_PrecioVenta";
+            Parametros[2].SqlDbType = SqlDbType.Money;
+            Parametros[2].SqlValue = cl_precioVenta;
+
+            Parametros[3] = new SqlParameter();
+            Parametros[3].ParameterName = "@cl_cantidad";
+            Parametros[3].SqlDbType = SqlDbType.Float;
+            Parametros[3].SqlValue = cl_cantidad;
+
+            Parametros[4] = new SqlParameter();
+            Parametros[4].ParameterName = "@cl_Accion";
+            Parametros[4].SqlDbType = SqlDbType.VarChar;
+            Parametros[4].SqlValue = cl_Accion;
+
+            Parametros[5] = new SqlParameter();
+            Parametros[5].ParameterName = "@cl_Movimiento";
+            Parametros[5].SqlDbType = SqlDbType.VarChar;
+            Parametros[5].SqlValue = cl_movimiento;
+
+            Parametros[6] = new SqlParameter();
+            Parametros[6].ParameterName = "@cl_fecha_registro";
+            Parametros[6].SqlDbType = SqlDbType.DateTime;
+            Parametros[6].SqlValue = cl_fecha_creacion;
+
+            Parametros[7] = new SqlParameter();
+            Parametros[7].ParameterName = "@cl_usuario";
+            Parametros[7].SqlDbType = SqlDbType.Int;
+            Parametros[7].SqlValue = cl_usuario;
         }
         public DataTable mtd_consultar_consecutivo()
         {
