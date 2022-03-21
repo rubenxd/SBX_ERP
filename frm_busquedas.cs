@@ -115,13 +115,13 @@ namespace SBX_ERP
                     }
                     v_dt = cls_Itemc.mtd_consultar_ayuda();
                    
-                    foreach (DataRow item in v_dt.Rows)
-                    {
-                        costo = Convert.ToDouble(item["Costo"]);
-                        PrecioVenta = Convert.ToDouble(item["cl_precioVenta"]);
-                        item["Costo"] = costo.ToString("N");
-                        item["cl_precioVenta"] = PrecioVenta.ToString("N");
-                    }
+                    //foreach (DataRow item in v_dt.Rows)
+                    //{
+                    //    costo = Convert.ToDouble(item["Costo"]);
+                    //    PrecioVenta = Convert.ToDouble(item["cl_precioVenta"]);
+                    //    item["Costo"] = costo.ToString("N");
+                    //    item["cl_precioVenta"] = PrecioVenta.ToString("N");
+                    //}
                     dtg_ayudas.DataSource = v_dt;
                     foreach (DataRow item in v_dt.Rows)
                     {
@@ -134,7 +134,12 @@ namespace SBX_ERP
                     }
                     txt_costos.Text = v_total_costos.ToString("N0");
                     txt_precioVenta.Text = v_total_precioVenta.ToString("N0");
-                    break;             
+                    break;
+                case 8:
+                    cl_activos cl_Activos = new cl_activos();
+                    v_dt = cl_Activos.mtd_consultar_activos();
+                    dtg_ayudas.DataSource = v_dt;
+                    break;
                 default:
                     break;
             }     
@@ -197,14 +202,15 @@ namespace SBX_ERP
                         this.Dispose();
                         break;
                     case 7:
-
                         v_dato = dtg_ayudas[1, v_filas].Value.ToString();
                         Enviainfo(v_dato);
                         this.Dispose();
- 
                         break;
-
-
+                    case 8:
+                        v_dato = dtg_ayudas[0, v_filas].Value.ToString();
+                        Enviainfo(v_dato);
+                        this.Dispose();
+                        break;
                 }
             }
         }
@@ -253,7 +259,7 @@ namespace SBX_ERP
 
         private void frm_busquedas_Load(object sender, EventArgs e)
         {
-
+            cbxTipoItem.SelectedIndex = 0;
         }
 
         private void btn_exportar_excel_Click(object sender, EventArgs e)

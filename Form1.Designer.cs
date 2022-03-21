@@ -37,12 +37,15 @@ namespace SBX_ERP
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pnl_menu = new System.Windows.Forms.Panel();
+            this.btn_gastos = new System.Windows.Forms.Button();
+            this.btn_activos = new System.Windows.Forms.Button();
             this.btn_config = new System.Windows.Forms.Button();
             this.btn_producto = new System.Windows.Forms.Button();
             this.btn_comercial = new System.Windows.Forms.Button();
             this.pnl_centro = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.btn_reportes = new System.Windows.Forms.Button();
             this.pnl_arriba.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnl_menu.SuspendLayout();
@@ -115,6 +118,9 @@ namespace SBX_ERP
             // 
             this.pnl_menu.BackColor = System.Drawing.Color.Gray;
             this.pnl_menu.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnl_menu.Controls.Add(this.btn_reportes);
+            this.pnl_menu.Controls.Add(this.btn_gastos);
+            this.pnl_menu.Controls.Add(this.btn_activos);
             this.pnl_menu.Controls.Add(this.btn_config);
             this.pnl_menu.Controls.Add(this.btn_producto);
             this.pnl_menu.Controls.Add(this.btn_comercial);
@@ -123,6 +129,48 @@ namespace SBX_ERP
             this.pnl_menu.Name = "pnl_menu";
             this.pnl_menu.Size = new System.Drawing.Size(800, 61);
             this.pnl_menu.TabIndex = 2;
+            // 
+            // btn_gastos
+            // 
+            this.btn_gastos.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btn_gastos.FlatAppearance.BorderSize = 0;
+            this.btn_gastos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
+            this.btn_gastos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkSeaGreen;
+            this.btn_gastos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_gastos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btn_gastos.ForeColor = System.Drawing.SystemColors.Window;
+            this.btn_gastos.Image = ((System.Drawing.Image)(resources.GetObject("btn_gastos.Image")));
+            this.btn_gastos.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btn_gastos.Location = new System.Drawing.Point(318, 0);
+            this.btn_gastos.Name = "btn_gastos";
+            this.btn_gastos.Size = new System.Drawing.Size(72, 57);
+            this.btn_gastos.TabIndex = 67;
+            this.btn_gastos.Text = "Gastos";
+            this.btn_gastos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_gastos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btn_gastos.UseVisualStyleBackColor = true;
+            this.btn_gastos.Click += new System.EventHandler(this.btn_gastos_Click);
+            // 
+            // btn_activos
+            // 
+            this.btn_activos.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btn_activos.FlatAppearance.BorderSize = 0;
+            this.btn_activos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
+            this.btn_activos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkSeaGreen;
+            this.btn_activos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_activos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_activos.ForeColor = System.Drawing.SystemColors.Window;
+            this.btn_activos.Image = ((System.Drawing.Image)(resources.GetObject("btn_activos.Image")));
+            this.btn_activos.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btn_activos.Location = new System.Drawing.Point(236, 0);
+            this.btn_activos.Name = "btn_activos";
+            this.btn_activos.Size = new System.Drawing.Size(82, 57);
+            this.btn_activos.TabIndex = 3;
+            this.btn_activos.Text = "activos";
+            this.btn_activos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_activos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btn_activos.UseVisualStyleBackColor = true;
+            this.btn_activos.Click += new System.EventHandler(this.btn_activos_Click);
             // 
             // btn_config
             // 
@@ -214,6 +262,27 @@ namespace SBX_ERP
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // btn_reportes
+            // 
+            this.btn_reportes.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btn_reportes.FlatAppearance.BorderSize = 0;
+            this.btn_reportes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
+            this.btn_reportes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkSeaGreen;
+            this.btn_reportes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_reportes.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btn_reportes.ForeColor = System.Drawing.SystemColors.Window;
+            this.btn_reportes.Image = ((System.Drawing.Image)(resources.GetObject("btn_reportes.Image")));
+            this.btn_reportes.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btn_reportes.Location = new System.Drawing.Point(390, 0);
+            this.btn_reportes.Name = "btn_reportes";
+            this.btn_reportes.Size = new System.Drawing.Size(72, 57);
+            this.btn_reportes.TabIndex = 68;
+            this.btn_reportes.Text = "Reportes";
+            this.btn_reportes.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_reportes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btn_reportes.UseVisualStyleBackColor = true;
+            this.btn_reportes.Click += new System.EventHandler(this.btn_reportes_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -253,6 +322,9 @@ namespace SBX_ERP
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Timer timer1;
         public System.Windows.Forms.Button btn_config;
+        public System.Windows.Forms.Button btn_activos;
+        public System.Windows.Forms.Button btn_gastos;
+        public System.Windows.Forms.Button btn_reportes;
     }
 }
 

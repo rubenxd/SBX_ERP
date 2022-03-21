@@ -353,3 +353,11 @@ C:\Ruben\SBX_ERP\obj\Debug\SBX_ERP.csproj.CopyComplete
 C:\Ruben\SBX_ERP\obj\Debug\SBX_ERP.exe
 C:\Ruben\SBX_ERP\obj\Debug\SBX_ERP.pdb
 C:\Ruben\SBX_ERP\obj\Debug\SBX_ERP.csproj.AssemblyReference.cache
+C:\Ruben\SBX_ERP\obj\Debug\SBX_ERP.frm_Activos.resources
+C:\Ruben\SBX_ERP\obj\Debug\SBX_ERP.frm_marca.resources
+C:\Ruben\SBX_ERP\obj\Debug\SBX_ERP.frm_agregar_consecto_gasto.resources
+C:\Ruben\SBX_ERP\obj\Debug\SBX_ERP.frm_agregar_gasto.resources
+C:\Ruben\SBX_ERP\obj\Debug\SBX_ERP.frm_confirmacion.resources
+C:\Ruben\SBX_ERP\obj\Debug\SBX_ERP.frm_gastos.resources
+C:\Ruben\SBX_ERP\obj\Debug\SBX_ERP.frm_msg.resources
+C:\Ruben\SBX_ERP\obj\Debug\SBX_ERP.frm_reportes.resources

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SBX_ERP.model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,7 @@ namespace SBX_ERP
         public string CodigoUsuario { get; set; }
         public string Usuario { get; set; }
         public string Nombre { get; set; }
+       
         public Form1()
         {
             InitializeComponent();
@@ -45,6 +47,24 @@ namespace SBX_ERP
         {
             frm_config frm_Config = new frm_config();
             frm_Config.ShowDialog();
+        }
+
+        private void btn_activos_Click(object sender, EventArgs e)
+        {
+            frm_Activos frm_Activos = new frm_Activos();
+            frm_Activos.Show();
+        }
+
+        private void btn_gastos_Click(object sender, EventArgs e)
+        {
+            frm_gastos frm_gastos = new frm_gastos();
+            frm_gastos.Show();
+        }
+
+        private void btn_reportes_Click(object sender, EventArgs e)
+        {
+            frm_reportes frm_Reportes = new frm_reportes();
+            frm_Reportes.Show();
         }
     }
 }

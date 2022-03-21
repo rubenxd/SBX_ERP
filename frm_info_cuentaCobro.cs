@@ -38,14 +38,18 @@ namespace SBX_ERP
         {
             double totalCostos = 0;
             double TotalVentas = 0;
+            double Costo = 0;
+            double PrecioVenta = 0;
             if (dtg_ayudas.Rows.Count > 0)
             {
                 foreach (DataGridViewRow rows in dtg_ayudas.Rows)
                 {
                     if (rows.Cells["cl_estado"].Value.ToString() == "Activa")
                     {
-                        totalCostos += Convert.ToDouble(rows.Cells["Costo"].Value) * Convert.ToDouble(rows.Cells["Cantidad"].Value);
-                        TotalVentas += Convert.ToDouble(rows.Cells["Precio Venta"].Value) * Convert.ToDouble(rows.Cells["Cantidad"].Value);
+                        Costo = Convert.ToDouble(Convert.ToDouble(rows.Cells["Costo"].Value));
+                        PrecioVenta = Convert.ToDouble(Convert.ToDouble(rows.Cells["Precio Venta"].Value));
+                        totalCostos += Costo * Convert.ToDouble(rows.Cells["Cantidad"].Value);
+                        TotalVentas += PrecioVenta  * Convert.ToDouble(rows.Cells["Cantidad"].Value);
                     }              
                 }      
                     txt_costo.Text = totalCostos.ToString("N0");
