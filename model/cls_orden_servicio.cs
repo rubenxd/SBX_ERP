@@ -187,7 +187,7 @@ namespace SBX_ERP.model
             Parametros[3] = new SqlParameter();
             Parametros[3].ParameterName = "@cl_cantidad";
             Parametros[3].SqlDbType = SqlDbType.Float;
-            Parametros[3].SqlValue = cl_cantidad;
+            Parametros[3].SqlValue = 0;
 
             Parametros[4] = new SqlParameter();
             Parametros[4].ParameterName = "@cl_Accion";
