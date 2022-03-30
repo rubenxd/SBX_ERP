@@ -22,7 +22,7 @@ namespace SBX_ERP.model
 
         public DataTable mtd_consultar()
         {
-            v_query = " select Sum(CostoTotal) CostoTotal, sum(TotalVenta) TotalVenta " +
+            v_query = " select  isnull(Sum(CostoTotal),0) CostoTotal, isnull(sum(TotalVenta),0) TotalVenta " +
                 " from ( " +
                 " select cl_item,cl_cantidad,cl_costo,cl_precioVenta, (cl_cantidad * cl_costo) CostoTotal, (cl_cantidad * cl_precioVenta) TotalVenta " +
                 " from [tbl_cuenta_cobro] " +
