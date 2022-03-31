@@ -56,7 +56,7 @@ namespace SBX_ERP
                     double Valores = Convert.ToDouble(rows["Valor"]);
                     TotalGastos += Valores;
                     dtg_gastos.Rows[Contador].Cells["cl_valor"].Value = Valores.ToString("N0");
-                    dtg_gastos.Rows[Contador].Cells["cl_proveedor"].Value = rows["proveedor"];
+                    dtg_gastos.Rows[Contador].Cells["cl_proveedor"].Value = rows["Descripcion"];
                     double ValoresIVA = Convert.ToDouble(rows["ValorIva"]);
                     TotalIva += ValoresIVA;
                     dtg_gastos.Rows[Contador].Cells["cl_valor_iva"].Value = ValoresIVA.ToString("N0");

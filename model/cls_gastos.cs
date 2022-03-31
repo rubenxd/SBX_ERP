@@ -39,7 +39,7 @@ namespace SBX_ERP.model
 
         public DataTable mtd_consultar_Gastos_report()
         {
-            v_query = " select Sum(Valor) Valor, sum(ValorIva) ValorIva from GastosM" +
+            v_query = " select isnull(Sum(Valor),0) Valor, isnull(sum(ValorIva),0) ValorIva from GastosM" +
                 " where CONVERT(date,FechaRegistro) BETWEEN '"+ Finical.ToString("yyyyMMdd") + "' AND '"+ ffinal.ToString("yyyyMMdd") + "' ";
             v_dt = cls_datos.mtd_consultar(v_query);
             return v_dt;

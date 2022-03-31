@@ -30,8 +30,8 @@ namespace SBX_ERP
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_gastos));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label5 = new System.Windows.Forms.Label();
             this.txt_valorMasIVA = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -39,12 +39,6 @@ namespace SBX_ERP
             this.txt_total = new System.Windows.Forms.TextBox();
             this.pnl_abajo = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.cl_valor_iva = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cl_proveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cl_valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cl_desc_gasto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cl_id_gasto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cl_fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dtp_fecha_fin = new System.Windows.Forms.DateTimePicker();
@@ -57,6 +51,12 @@ namespace SBX_ERP
             this.btn_exportar_excel = new System.Windows.Forms.Button();
             this.dtg_gastos = new System.Windows.Forms.DataGridView();
             this.pnl_arriba = new System.Windows.Forms.Panel();
+            this.cl_fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cl_id_gasto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cl_desc_gasto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cl_proveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cl_valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cl_valor_iva = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnl_abajo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtg_gastos)).BeginInit();
             this.pnl_arriba.SuspendLayout();
@@ -142,42 +142,6 @@ namespace SBX_ERP
             this.label1.Size = new System.Drawing.Size(81, 17);
             this.label1.TabIndex = 25;
             this.label1.Text = "Total Valor:";
-            // 
-            // cl_valor_iva
-            // 
-            this.cl_valor_iva.HeaderText = "Valor IVA";
-            this.cl_valor_iva.Name = "cl_valor_iva";
-            this.cl_valor_iva.ReadOnly = true;
-            // 
-            // cl_proveedor
-            // 
-            this.cl_proveedor.HeaderText = "Proveedor";
-            this.cl_proveedor.Name = "cl_proveedor";
-            this.cl_proveedor.ReadOnly = true;
-            // 
-            // cl_valor
-            // 
-            this.cl_valor.HeaderText = "Valor";
-            this.cl_valor.Name = "cl_valor";
-            this.cl_valor.ReadOnly = true;
-            // 
-            // cl_desc_gasto
-            // 
-            this.cl_desc_gasto.HeaderText = "Desc. Gasto";
-            this.cl_desc_gasto.Name = "cl_desc_gasto";
-            this.cl_desc_gasto.ReadOnly = true;
-            // 
-            // cl_id_gasto
-            // 
-            this.cl_id_gasto.HeaderText = "Codigo";
-            this.cl_id_gasto.Name = "cl_id_gasto";
-            this.cl_id_gasto.ReadOnly = true;
-            // 
-            // cl_fecha
-            // 
-            this.cl_fecha.HeaderText = "Fecha";
-            this.cl_fecha.Name = "cl_fecha";
-            this.cl_fecha.ReadOnly = true;
             // 
             // label3
             // 
@@ -311,30 +275,30 @@ namespace SBX_ERP
             this.dtg_gastos.AllowUserToOrderColumns = true;
             this.dtg_gastos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtg_gastos.BackgroundColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtg_gastos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtg_gastos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dtg_gastos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtg_gastos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cl_fecha,
             this.cl_id_gasto,
             this.cl_desc_gasto,
-            this.cl_valor,
             this.cl_proveedor,
+            this.cl_valor,
             this.cl_valor_iva});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.DarkSeaGreen;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtg_gastos.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DarkSeaGreen;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtg_gastos.DefaultCellStyle = dataGridViewCellStyle2;
             this.dtg_gastos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtg_gastos.Location = new System.Drawing.Point(0, 42);
             this.dtg_gastos.Name = "dtg_gastos";
@@ -361,6 +325,42 @@ namespace SBX_ERP
             this.pnl_arriba.Name = "pnl_arriba";
             this.pnl_arriba.Size = new System.Drawing.Size(800, 42);
             this.pnl_arriba.TabIndex = 8;
+            // 
+            // cl_fecha
+            // 
+            this.cl_fecha.HeaderText = "Fecha";
+            this.cl_fecha.Name = "cl_fecha";
+            this.cl_fecha.ReadOnly = true;
+            // 
+            // cl_id_gasto
+            // 
+            this.cl_id_gasto.HeaderText = "Codigo";
+            this.cl_id_gasto.Name = "cl_id_gasto";
+            this.cl_id_gasto.ReadOnly = true;
+            // 
+            // cl_desc_gasto
+            // 
+            this.cl_desc_gasto.HeaderText = "Gasto";
+            this.cl_desc_gasto.Name = "cl_desc_gasto";
+            this.cl_desc_gasto.ReadOnly = true;
+            // 
+            // cl_proveedor
+            // 
+            this.cl_proveedor.HeaderText = "Descripcion";
+            this.cl_proveedor.Name = "cl_proveedor";
+            this.cl_proveedor.ReadOnly = true;
+            // 
+            // cl_valor
+            // 
+            this.cl_valor.HeaderText = "Valor";
+            this.cl_valor.Name = "cl_valor";
+            this.cl_valor.ReadOnly = true;
+            // 
+            // cl_valor_iva
+            // 
+            this.cl_valor_iva.HeaderText = "Valor IVA";
+            this.cl_valor_iva.Name = "cl_valor_iva";
+            this.cl_valor_iva.ReadOnly = true;
             // 
             // frm_gastos
             // 
@@ -391,12 +391,6 @@ namespace SBX_ERP
         private System.Windows.Forms.TextBox txt_total;
         private System.Windows.Forms.Panel pnl_abajo;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cl_valor_iva;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cl_proveedor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cl_valor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cl_desc_gasto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cl_id_gasto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cl_fecha;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         public System.Windows.Forms.DateTimePicker dtp_fecha_fin;
@@ -409,5 +403,11 @@ namespace SBX_ERP
         private System.Windows.Forms.Button btn_exportar_excel;
         private System.Windows.Forms.DataGridView dtg_gastos;
         private System.Windows.Forms.Panel pnl_arriba;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cl_fecha;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cl_id_gasto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cl_desc_gasto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cl_proveedor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cl_valor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cl_valor_iva;
     }
 }
