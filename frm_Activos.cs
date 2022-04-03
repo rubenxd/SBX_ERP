@@ -24,6 +24,7 @@ namespace SBX_ERP
         cls_global cls_Global = new cls_global();
         cl_marca cl_Marca = new cl_marca();
         int v_fila = 0;
+        double TotalActivos = 0;
         public string codigoMarca { get; set; }
         public frm_Activos()
         {
@@ -60,6 +61,7 @@ namespace SBX_ERP
             v_dt_activos = cls_activos.mtd_consultar_kardex_activos();
             dtg_venta.DataSource = v_dt_activos;
             Registro = true;
+            buscar();
         }
         private void mtd_validar()
         {
@@ -163,6 +165,7 @@ namespace SBX_ERP
                     dtg_venta.DataSource = v_dt_activos;
                 }
             }
+            buscar();
         }
 
         private void btn_add_marca_Click(object sender, EventArgs e)
@@ -276,11 +279,21 @@ namespace SBX_ERP
 
         private void btn_buscar_Click(object sender, EventArgs e)
         {
+            buscar();
+        }
+
+        private void buscar()
+        {
+            TotalActivos = 0;
             cls_activos.v_buscar = txt_buscar.Text;
             cls_activos.Finicial = dtp_fecha_inicio.Value;
             cls_activos.Ffinal = dtp_fecha_fin.Value;
             v_dt_activos = cls_activos.mtd_consultar_kardex_activos();
-           
+            foreach (DataRow item in v_dt_activos.Rows)
+            {
+                TotalActivos += Convert.ToDouble(item["Valor"]);
+            }
+            lblTotalActivos.Text = TotalActivos.ToString("N0");
             dtg_venta.DataSource = v_dt_activos;
         }
     }
