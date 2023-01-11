@@ -167,10 +167,10 @@ namespace SBX_ERP
             this.cbxPeriodicidadPago.FormattingEnabled = true;
             this.cbxPeriodicidadPago.Items.AddRange(new object[] {
             "N/A",
-            "15 días",
-            "30 días",
-            "45 días",
-            "60 días"});
+            "15 dias",
+            "30 dias",
+            "45 dias",
+            "60 dias"});
             this.cbxPeriodicidadPago.Location = new System.Drawing.Point(137, 220);
             this.cbxPeriodicidadPago.Name = "cbxPeriodicidadPago";
             this.cbxPeriodicidadPago.Size = new System.Drawing.Size(232, 24);

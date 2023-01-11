@@ -131,7 +131,7 @@ namespace SBX_ERP.model
         {
             v_query = " UPDATE tbl_tercero SET  cl_identificacion = @cl_identificacion,cl_tipo_identificacion = @cl_tipo_identificacion,cl_razon_social = @cl_razon_social,  " +
                       " cl_telefonos = @cl_telefonos,cl_Email = @cl_Email,cl_fecha_modificacion = @cl_fecha_modificacion,cl_usuario = @cl_usuario, cl_periodicidadPago = @cl_periodicidadPago " +
-                      " WHERE cl_identificacion = " + v_buscar;
+                      " WHERE cl_identificacion = '" + v_buscar + "'";
                     
             mtd_asignaParametros();
             v_ok = cls_datos.mtd_editar(Parametros, v_query);
