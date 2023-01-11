@@ -21,6 +21,7 @@ namespace SBX_ERP.model
         public string cl_fecha_creacion { get; set; }
         public string cl_fecha_modificacion { get; set; }
         public string cl_usuario { get; set; }
+        public string cl_periodicidadPago { get; set; }
 
         //instancias
         cls_conexion cls_cn = new cls_conexion();
@@ -60,7 +61,7 @@ namespace SBX_ERP.model
         }
         private void mtd_asignaParametros()
         {
-            Parametros = new SqlParameter[10];
+            Parametros = new SqlParameter[11];
 
             Parametros[0] = new SqlParameter();
             Parametros[0].ParameterName = "@cl_identificacion";
@@ -111,11 +112,16 @@ namespace SBX_ERP.model
             Parametros[9].ParameterName = "@cl_usuario";
             Parametros[9].SqlDbType = SqlDbType.VarChar;
             Parametros[9].SqlValue = cl_usuario;
+
+            Parametros[10] = new SqlParameter();
+            Parametros[10].ParameterName = "@cl_periodicidadPago";
+            Parametros[10].SqlDbType = SqlDbType.VarChar;
+            Parametros[10].SqlValue = cl_periodicidadPago;
         }
         public Boolean mtd_registrar()
         {
-            v_query = " INSERT INTO tbl_tercero (cl_identificacion,cl_tipo_identificacion,cl_razon_social,cl_tipo_persona,cl_direccion,cl_telefonos,cl_Email,cl_fecha_creacion,cl_fecha_modificacion,cl_usuario)" +
-                      " VALUES (@cl_identificacion,@cl_tipo_identificacion,@cl_razon_social,@cl_tipo_persona,@cl_direccion,@cl_telefonos,@cl_Email,@cl_fecha_creacion,@cl_fecha_modificacion,@cl_usuario)";
+            v_query = " INSERT INTO tbl_tercero (cl_identificacion,cl_tipo_identificacion,cl_razon_social,cl_tipo_persona,cl_direccion,cl_telefonos,cl_Email,cl_fecha_creacion,cl_fecha_modificacion,cl_usuario,cl_periodicidadPago)" +
+                      " VALUES (@cl_identificacion,@cl_tipo_identificacion,@cl_razon_social,@cl_tipo_persona,@cl_direccion,@cl_telefonos,@cl_Email,@cl_fecha_creacion,@cl_fecha_modificacion,@cl_usuario,@cl_periodicidadPago)";
 
             mtd_asignaParametros();
             v_ok = cls_datos.mtd_registrar(Parametros, v_query);
@@ -124,7 +130,7 @@ namespace SBX_ERP.model
         public Boolean mtd_Editar()
         {
             v_query = " UPDATE tbl_tercero SET  cl_identificacion = @cl_identificacion,cl_tipo_identificacion = @cl_tipo_identificacion,cl_razon_social = @cl_razon_social,  " +
-                      " cl_telefonos = @cl_telefonos,cl_Email = @cl_Email,cl_fecha_modificacion = @cl_fecha_modificacion,cl_usuario = @cl_usuario " +
+                      " cl_telefonos = @cl_telefonos,cl_Email = @cl_Email,cl_fecha_modificacion = @cl_fecha_modificacion,cl_usuario = @cl_usuario, cl_periodicidadPago = @cl_periodicidadPago " +
                       " WHERE cl_identificacion = " + v_buscar;
                     
             mtd_asignaParametros();

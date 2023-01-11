@@ -147,6 +147,7 @@ namespace SBX_ERP
                                     cl_Cuenta_Cobro2.cl_direccion = rows_2["cl_direccion"].ToString();
                                     cl_Cuenta_Cobro2.cl_telefonos = rows_2["cl_telefonos"].ToString();
                                     cl_Cuenta_Cobro2.cl_Email = rows_2["cl_Email"].ToString();
+                                    cl_Cuenta_Cobro2.cl_periodicidadPago = rows_2["cl_periodicidadPago"].ToString();
                                     DateTime Fechamod = Convert.ToDateTime(rows_2["cl_fecha_modificacion"]);
                                     cl_Cuenta_Cobro2.cl_fecha_modificacion = Fechamod.ToString("yyyy-MM-dd");
                                 }
@@ -186,6 +187,7 @@ namespace SBX_ERP
                                     cl_Cuenta_Cobro2.cl_direccion = rows_2["cl_direccion"].ToString();
                                     cl_Cuenta_Cobro2.cl_telefonos = rows_2["cl_telefonos"].ToString();
                                     cl_Cuenta_Cobro2.cl_Email = rows_2["cl_Email"].ToString();
+                                    cl_Cuenta_Cobro2.cl_periodicidadPago = rows_2["cl_periodicidadPago"].ToString();
                                     cl_Cuenta_Cobro2.cl_tipo_item = rows_2["cl_tipo_item"].ToString();
                                     double Total = Convert.ToDouble(rows_2["Total"]);
                                     cl_Cuenta_Cobro2.Total = Total.ToString("N");
@@ -234,6 +236,7 @@ namespace SBX_ERP
                                     cl_Cuenta_Cobro3.cl_direccion = rows_2["cl_direccion"].ToString();
                                     cl_Cuenta_Cobro3.cl_telefonos = rows_2["cl_telefonos"].ToString();
                                     cl_Cuenta_Cobro3.cl_Email = rows_2["cl_Email"].ToString();
+                                    cl_Cuenta_Cobro3.cl_periodicidadPago = rows_2["cl_periodicidadPago"].ToString();
                                     cl_Cuenta_Cobro3.cl_tipo_item = rows_2["cl_tipo_item"].ToString();
                                     double Total2 = Convert.ToDouble(rows_2["Total"]);
                                     cl_Cuenta_Cobro3.Total = Total2.ToString("N");

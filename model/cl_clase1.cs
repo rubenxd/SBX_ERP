@@ -56,10 +56,10 @@ namespace SBX_ERP.model
         public string cl_direccion { get; set; }
         public string cl_telefonos { get; set; }
         public string cl_Email { get; set; }
-
         public string v_buscar { get; set; }
         public string v_Fecha_inicio { get; set; }
         public string v_Fecha_fin { get; set; }
+        public string cl_periodicidadPago { get; set; }
 
         //orden de servicio
         public string docOS { get; set; }
@@ -213,6 +213,7 @@ namespace SBX_ERP.model
    "  tc.cl_direccion, " +
    "  tc.cl_telefonos, " +
    "  tc.cl_Email, " +
+   "  tc.cl_periodicidadPago, " +
    " it.cl_tipo_item, " +
    " ((os.[cl_cantidad] * os.[cl_precioVenta]) - os.[cl_descuento]) Total, " +
    " os.cl_nota " +

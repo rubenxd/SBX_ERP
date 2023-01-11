@@ -66,5 +66,11 @@ namespace SBX_ERP
             frm_reportes frm_Reportes = new frm_reportes();
             frm_Reportes.Show();
         }
+
+        private void btnKardex_Click(object sender, EventArgs e)
+        {
+            frm_kardex frm_Kardex = new frm_kardex();
+            frm_Kardex.Show();
+        }
     }
 }

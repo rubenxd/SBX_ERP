@@ -52,6 +52,8 @@ namespace SBX_ERP
             this.label1 = new System.Windows.Forms.Label();
             this.txt_identificacion = new System.Windows.Forms.TextBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label2 = new System.Windows.Forms.Label();
+            this.cbxPeriodicidadPago = new System.Windows.Forms.ComboBox();
             this.pnl_menu.SuspendLayout();
             this.pnl_centro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -134,6 +136,8 @@ namespace SBX_ERP
             // 
             this.pnl_centro.BackColor = System.Drawing.SystemColors.Menu;
             this.pnl_centro.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnl_centro.Controls.Add(this.cbxPeriodicidadPago);
+            this.pnl_centro.Controls.Add(this.label2);
             this.pnl_centro.Controls.Add(this.btn_buscar_2);
             this.pnl_centro.Controls.Add(this.label8);
             this.pnl_centro.Controls.Add(this.txt_email);
@@ -152,7 +156,7 @@ namespace SBX_ERP
             this.pnl_centro.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_centro.Location = new System.Drawing.Point(0, 41);
             this.pnl_centro.Name = "pnl_centro";
-            this.pnl_centro.Size = new System.Drawing.Size(443, 234);
+            this.pnl_centro.Size = new System.Drawing.Size(443, 285);
             this.pnl_centro.TabIndex = 5;
             // 
             // btn_buscar_2
@@ -333,11 +337,41 @@ namespace SBX_ERP
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(13, 223);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(114, 16);
+            this.label2.TabIndex = 61;
+            this.label2.Text = "Periodicida pago";
+            // 
+            // cbxPeriodicidadPago
+            // 
+            this.cbxPeriodicidadPago.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cbxPeriodicidadPago.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxPeriodicidadPago.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxPeriodicidadPago.FormattingEnabled = true;
+            this.cbxPeriodicidadPago.Items.AddRange(new object[] {
+            "N/A",
+            "Semanal",
+            "Quincenal",
+            "Mensual",
+            "Trimestral",
+            "Semestral",
+            "Anual"});
+            this.cbxPeriodicidadPago.Location = new System.Drawing.Point(137, 220);
+            this.cbxPeriodicidadPago.Name = "cbxPeriodicidadPago";
+            this.cbxPeriodicidadPago.Size = new System.Drawing.Size(232, 24);
+            this.cbxPeriodicidadPago.TabIndex = 62;
+            // 
             // frm_terceros
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(443, 275);
+            this.ClientSize = new System.Drawing.Size(443, 326);
             this.Controls.Add(this.pnl_centro);
             this.Controls.Add(this.pnl_menu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -377,5 +411,7 @@ namespace SBX_ERP
         public System.Windows.Forms.Button btn_buscar;
         private System.Windows.Forms.Button btn_buscar_2;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.ComboBox cbxPeriodicidadPago;
+        private System.Windows.Forms.Label label2;
     }
 }

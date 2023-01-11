@@ -26,7 +26,7 @@ namespace SBX_ERP.model
                 " from ( " +
                 " select cl_item,cl_cantidad,cl_costo,cl_precioVenta, (cl_cantidad * cl_costo) CostoTotal, (cl_cantidad * cl_precioVenta) TotalVenta " +
                 " from [tbl_cuenta_cobro] " +
-                " where CONVERT(date,cl_fecha_creacion) BETWEEN '"+Finical.ToString("yyyyMMdd")+"' AND '"+ffinal.ToString("yyyyMMdd")+"' " +
+                " where CONVERT(date,cl_fecha_creacion) BETWEEN '"+Finical.ToString("yyyyMMdd")+"' AND '"+ffinal.ToString("yyyyMMdd")+ "' AND (cl_estado = 1)  " +
                 " )g ";
             v_dt = cls_datos.mtd_consultar(v_query);
             return v_dt;

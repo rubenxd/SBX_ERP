@@ -218,6 +218,12 @@
     <Compile Include="frm_items.Designer.cs">
       <DependentUpon>frm_items.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_kardex.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_kardex.Designer.cs">
+      <DependentUpon>frm_kardex.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -277,6 +283,7 @@
     <Compile Include="model\cl_clase1.cs" />
     <Compile Include="model\cl_cotizacion.cs" />
     <Compile Include="model\cl_cuenta_cobro.cs" />
+    <Compile Include="model\cl_kardex.cs" />
     <Compile Include="model\cl_marca.cs" />
     <Compile Include="model\cuentaCobro.cs" />
     <Compile Include="Program.cs" />
@@ -344,6 +351,9 @@
     <EmbeddedResource Include="frm_items.resx">
       <DependentUpon>frm_items.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frm_kardex.resx">
+      <DependentUpon>frm_kardex.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_login.resx">
       <DependentUpon>frm_login.cs</DependentUpon>
     </EmbeddedResource>
@@ -377,6 +387,8 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Report1.rdlc" />
+    <EmbeddedResource Include="Report3.rdlc" />
+    <EmbeddedResource Include="Reportes\CuentaCobro.rdlc" />
     <EmbeddedResource Include="rpt_cotizacion.rdlc" />
     <None Include="erp_sbxDataSet.xsc">
       <DependentUpon>erp_sbxDataSet.xsd</DependentUpon>

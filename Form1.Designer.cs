@@ -37,6 +37,8 @@ namespace SBX_ERP
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pnl_menu = new System.Windows.Forms.Panel();
+            this.btnKardex = new System.Windows.Forms.Button();
+            this.btn_reportes = new System.Windows.Forms.Button();
             this.btn_gastos = new System.Windows.Forms.Button();
             this.btn_activos = new System.Windows.Forms.Button();
             this.btn_config = new System.Windows.Forms.Button();
@@ -45,7 +47,6 @@ namespace SBX_ERP
             this.pnl_centro = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.btn_reportes = new System.Windows.Forms.Button();
             this.pnl_arriba.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnl_menu.SuspendLayout();
@@ -118,6 +119,7 @@ namespace SBX_ERP
             // 
             this.pnl_menu.BackColor = System.Drawing.Color.Gray;
             this.pnl_menu.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnl_menu.Controls.Add(this.btnKardex);
             this.pnl_menu.Controls.Add(this.btn_reportes);
             this.pnl_menu.Controls.Add(this.btn_gastos);
             this.pnl_menu.Controls.Add(this.btn_activos);
@@ -129,6 +131,48 @@ namespace SBX_ERP
             this.pnl_menu.Name = "pnl_menu";
             this.pnl_menu.Size = new System.Drawing.Size(800, 61);
             this.pnl_menu.TabIndex = 2;
+            // 
+            // btnKardex
+            // 
+            this.btnKardex.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnKardex.FlatAppearance.BorderSize = 0;
+            this.btnKardex.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
+            this.btnKardex.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkSeaGreen;
+            this.btnKardex.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnKardex.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnKardex.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnKardex.Image = ((System.Drawing.Image)(resources.GetObject("btnKardex.Image")));
+            this.btnKardex.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnKardex.Location = new System.Drawing.Point(462, 0);
+            this.btnKardex.Name = "btnKardex";
+            this.btnKardex.Size = new System.Drawing.Size(72, 57);
+            this.btnKardex.TabIndex = 69;
+            this.btnKardex.Text = "Kardex";
+            this.btnKardex.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnKardex.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnKardex.UseVisualStyleBackColor = true;
+            this.btnKardex.Click += new System.EventHandler(this.btnKardex_Click);
+            // 
+            // btn_reportes
+            // 
+            this.btn_reportes.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btn_reportes.FlatAppearance.BorderSize = 0;
+            this.btn_reportes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
+            this.btn_reportes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkSeaGreen;
+            this.btn_reportes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_reportes.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btn_reportes.ForeColor = System.Drawing.SystemColors.Window;
+            this.btn_reportes.Image = ((System.Drawing.Image)(resources.GetObject("btn_reportes.Image")));
+            this.btn_reportes.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btn_reportes.Location = new System.Drawing.Point(390, 0);
+            this.btn_reportes.Name = "btn_reportes";
+            this.btn_reportes.Size = new System.Drawing.Size(72, 57);
+            this.btn_reportes.TabIndex = 68;
+            this.btn_reportes.Text = "Reportes";
+            this.btn_reportes.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_reportes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btn_reportes.UseVisualStyleBackColor = true;
+            this.btn_reportes.Click += new System.EventHandler(this.btn_reportes_Click);
             // 
             // btn_gastos
             // 
@@ -262,27 +306,6 @@ namespace SBX_ERP
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // btn_reportes
-            // 
-            this.btn_reportes.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btn_reportes.FlatAppearance.BorderSize = 0;
-            this.btn_reportes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
-            this.btn_reportes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkSeaGreen;
-            this.btn_reportes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_reportes.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.btn_reportes.ForeColor = System.Drawing.SystemColors.Window;
-            this.btn_reportes.Image = ((System.Drawing.Image)(resources.GetObject("btn_reportes.Image")));
-            this.btn_reportes.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btn_reportes.Location = new System.Drawing.Point(390, 0);
-            this.btn_reportes.Name = "btn_reportes";
-            this.btn_reportes.Size = new System.Drawing.Size(72, 57);
-            this.btn_reportes.TabIndex = 68;
-            this.btn_reportes.Text = "Reportes";
-            this.btn_reportes.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btn_reportes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btn_reportes.UseVisualStyleBackColor = true;
-            this.btn_reportes.Click += new System.EventHandler(this.btn_reportes_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -325,6 +348,7 @@ namespace SBX_ERP
         public System.Windows.Forms.Button btn_activos;
         public System.Windows.Forms.Button btn_gastos;
         public System.Windows.Forms.Button btn_reportes;
+        public System.Windows.Forms.Button btnKardex;
     }
 }
 

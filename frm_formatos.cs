@@ -54,7 +54,7 @@ namespace SBX_ERP
                     this.reportViewer1.LocalReport.ReportEmbeddedResource = "SBX_ERP.CuentaCobro.rdlc";
                     this.reportViewer1.LocalReport.DataSources.Clear();
                     this.reportViewer1.LocalReport.DataSources.Add(rds_ctcb);
-                    this.reportViewer1.RefreshReport();
+                    //this.reportViewer1.RefreshReport();
 
                     ReportDataSource rds_ctcb2 = new ReportDataSource("CuentaCobro2", lctcb2);
                     this.reportViewer1.LocalReport.ReportEmbeddedResource = "SBX_ERP.CuentaCobro.rdlc";

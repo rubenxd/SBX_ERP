@@ -57,7 +57,7 @@ namespace SBX_ERP.model
         public string cl_direccion { get; set; }
         public string cl_telefonos { get; set; }
         public string cl_Email { get; set; }
-
+        public string cl_periodicidadPago { get; set; }
         public string v_buscar { get; set; }
         public string v_Fecha_inicio { get; set; }
         public string v_Fecha_fin { get; set; }
@@ -286,7 +286,8 @@ namespace SBX_ERP.model
    " it.cl_tipo_item, " +
    " ((os.[cl_cantidad] * os.[cl_precioVenta]) - os.[cl_descuento]) Total, " +
    " os.cl_nota, " +
-   " os.km " +
+   " os.km, " +
+   " tc.cl_periodicidadPago " +
    "  FROM[erp_sbx].[dbo].[tbl_cuenta_cobro] os " +
    "  inner join tbl_items it on it.cl_codigo_pk = os.[cl_item] " +
    "  inner join tbl_vehiculo vh on vh.cl_codigo_pk = os.cl_vehiculo " +

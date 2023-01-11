@@ -26,6 +26,7 @@ namespace SBX_ERP
         {
             cbx_tipo_identificacion.SelectedIndex = 0;
             cbx_tipo_persona.SelectedIndex = 0;
+            cbxPeriodicidadPago.SelectedIndex = 0;
         }
         private void btn_vehiculos_Click(object sender, EventArgs e)
         {
@@ -95,6 +96,7 @@ namespace SBX_ERP
                     //se envia la fecha de creacion pero no se realizara ningun cambio en esa fecha en base de datos
                     cls_Terceros.cl_fecha_creacion = Fecha.ToString();
                     cls_Terceros.cl_usuario = "1";
+                    cls_Terceros.cl_periodicidadPago = cbxPeriodicidadPago.Text;
 
                     v_ok = cls_Terceros.mtd_Editar();
                     if (v_ok)
@@ -117,6 +119,7 @@ namespace SBX_ERP
                     cls_Terceros.cl_fecha_modificacion = Fecha.ToString();
                     cls_Terceros.cl_fecha_creacion = Fecha.ToString();
                     cls_Terceros.cl_usuario = "1";
+                    cls_Terceros.cl_periodicidadPago = cbxPeriodicidadPago.Text;
 
                     v_ok = cls_Terceros.mtd_registrar();
                     if (v_ok)
@@ -193,6 +196,7 @@ namespace SBX_ERP
                 txt_direccion.Text = item["cl_direccion"].ToString();
                 txt_telefonos.Text = item["cl_telefonos"].ToString();
                 txt_email.Text = item["cl_Email"].ToString();
+                cbxPeriodicidadPago.Text = item["cl_periodicidadPago"].ToString();
             }
             this.Cursor = Cursors.Default;
         }
